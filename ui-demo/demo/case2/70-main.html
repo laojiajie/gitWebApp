@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>处罚案件-执行</title>
+	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<script type="text/javascript" src="../../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="../../resource/css/form.css">
+	<script type="text/javascript"  src="../../resource/js/form.js"></script>
+</head>
+<body class="easyui-layout">
+		<div data-options="region:'west',split:true" title="" style="width:200px;">
+			<div class="demo-info"><INPUT TYPE="radio" NAME="模板">模板<INPUT TYPE="radio" checked NAME="全打">全打<INPUT TYPE="radio" NAME="套打">套打</div>
+			<div class="easyui-layout" data-options="fit:true">
+				<div data-options="region:'north',split:true,border:false"  title="文书区" style="height:200px">
+				</div>
+				<div data-options="region:'center',border:false"  title="附件区"></div>
+				<div data-options="region:'south',split:true,border:false"  title="位置简图" style="height:200px"></div>
+			</div>
+		</div>
+		<div data-options="region:'center',title:'',iconCls:'icon-ok'">
+			<div class="easyui-tabs" data-options="fit:true,border:false,plain:true">
+				<div title="工作区" data-options="" style="padding:10px">
+	
+					<div class="easyui-layout" data-options="fit:true">
+						<div data-options="region:'center',split:false,border:false">
+				   		<table cellpadding="0" cellspacing="0" border="0"  class="LCicon_tbl" >
+							<tr>
+								<td>
+									<div class='LCicon_div'>
+										<div class="LCtitle">缴纳处罚金</div>
+										<div class="LCion"><input type="button" value="查看" class="LCbtn" id="btn_1" onclick=" $('#win_1').window('open')"></div>
+										<div class="LCtxt"><span class="mark">张三</span>于2014-10-11已经处理</div>
+									</div>
+								</td>
+									<td>
+									<div class='LCicon_div'>
+										<div class="LCtitle">结案报告</div>
+										<div class="LCion"><input type="button" value="查看" class="LCbtn" id="btn_2" onclick=" $('#win_2').window('open')"></div>
+										<div class="LCtxt"><span class="mark">张三</span>于2014-10-11已经处理</div>
+									</div>
+								</td>
+
+									<td>
+									<div class='LCicon_div'>
+										<div class="LCtitle">审核</div>
+										<div class="LCion"><input type="button" value="选项" class="LCbtn LCdrop" id="btn_3" ></div>
+										<div class="LCtxt">
+											点击查看更多选项
+											</div>
+											<ul class="LC2_ul">
+												<li><a href="执行-法制机构审核意见.html" id="btn_30" >法制机构审核意见</a></li>
+												<li><a href="执行-行政机构审批意见.html" id="btn_31" >行政执法机构审批意见</a></li>
+											</ul>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class='LCicon_div'>
+										<div class="LCtitle">行政强制拆执行</div>
+										<div class="LCion"><input type="button" value="选项" class="LCbtn LCdrop" id="btn_4" ></div>
+										<div class="LCtxt">
+											点击查看更多选项
+											</div>
+											<ul class="LC2_ul">
+												<li><a href="javascript:void(0)" id="btn_30" onclick=" $('#win_40').window('open')">行政决定义务履行催告</a></li>
+												<li><a href="javascript:void(0)" id="btn_31" onclick=" $('#win_41').window('open')">代履行决定</a></li>
+												<li><a href="javascript:void(0)" id="btn_31" onclick=" $('#win_42').window('open')">限期拆除</a></li>
+												<li><a href="javascript:void(0)" id="btn_31" onclick=" $('#win_43').window('open')">限期拆除公告</a></li>
+												<li><a href="javascript:void(0)" id="btn_31" onclick=" $('#win_44').window('open')">延长扣押期限通知书</a></li>
+												<li><a href="javascript:void(0)" id="btn_31" onclick=" $('#win_45').window('open')">行政强制执行申请</a></li>
+												<li><a href="javascript:void(0)" id="btn_31" onclick=" $('#win_46').window('open')">解除行政强制措施通知书</a></li>
+												<li><a href="javascript:void(0)" id="btn_31" onclick=" $('#win_47').window('open')">取回被扣留车辆（工具）收据</a></li>
+												<li><a href="javascript:void(0)" id="btn_31" onclick=" $('#win_48').window('open')">行政强制中止（终结）执行告知书</a></li>
+											</ul>
+									</div>
+								</td>
+								<td>
+									<div class='LCicon_div'>
+										<div class="LCtitle">分期（延期）处理</div>
+										<div class="LCion"><input type="button" value="选项" class="LCbtn LCdrop" id="btn_5" ></div>
+										<div class="LCtxt">
+											点击查看更多选项
+											</div>
+											<ul class="LC2_ul">
+												<li><a href="javascript:void(0)" id="btn_30" onclick=" $('#win_50').window('open')">分期（延期）缴纳罚款申请书</a></li>
+												<li><a href="javascript:void(0)" id="btn_31" onclick=" $('#win_51').window('open')">分期延期缴纳罚款意见</a></li>
+												<li><a href="javascript:void(0)" id="btn_31" onclick=" $('#win_52').window('open')">同意分期（延期）缴纳罚款通知书</a></li>
+												<li><a href="javascript:void(0)" id="btn_31" onclick=" $('#win_53').window('open')">不予分期（延期）缴纳罚款通知书</a></li>
+											</ul>
+									</div>
+								</td>
+							</tr>
+							</table>
+						
+						
+						
+						
+						</div>
+						<div data-options="region:'south',border:false"  style="height:30px">
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">提交</a>
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-sum'">暂存</a>
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-tip'">转交</a>
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">附件管理</a>							
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'">送达回证</a>							
+						</div>
+					</div>
+				</div>
+				<div title="案件基本信息" data-options="" style="padding:10px">
+               <table>
+	    		<tr>
+	    			<td>案件编号：</td>
+	    			<td></td>
+	    		</tr>
+	    		<tr>
+	    			<td>案由:</td>
+	    			<td> </td>
+	    		</tr>
+	    		<tr>
+	    			<td>案发路线:</td>
+	    			<td> </td>
+	    		</tr>
+	    		<tr>
+	    			<td>案发时间:</td>
+	    			<td> </td>
+	    		</tr>
+	    		<tr>
+	    			<td>当事人:</td>
+	    			<td> </td>
+	    		</tr>
+	    		<tr>
+	    			<td>事故原因:</td>
+	    			<td> </td>
+	    		</tr>
+			  </table>
+				</div>
+				<div title="办事痕迹" data-options="href:''" style="padding:10px">
+					<table class="easyui-datagrid"
+							data-options="method:'get',singleSelect:true,fit:true,fitColumns:true">
+						<thead>
+							<tr>
+								<th data-options="field:'itemid'" width="80">任务</th>
+								<th data-options="field:'productid'" width="100">处理人</th>
+								<th data-options="field:'listprice',align:'right'" width="80">完成时间</th>
+								<th data-options="field:'unitcost',align:'right'" width="80">状态</th>
+								<th data-options="field:'unitcost',align:'right'" width="80">意见或回退原因 </th>
+							</tr>
+						</thead>
+					</table>				
+				</div>
+				<div title="流程图" style="padding:5px">
+
+				</div>
+			</div>
+		</div>
+
+  <!-- begin 缴纳处罚金    -->
+	<div id="win_1" class="easyui-dialog" title="缴纳处罚金" style="width:900px;height:350px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+            <table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+				<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr>
+					<td class="label">处罚金额(元)</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">是否自觉履行缴纳处罚金</td>
+					<td colspan="3">是<input type="radio" name=""> 否<input type="radio" name=""></td>
+				</tr>
+				<tr>
+					<td class="label">实际缴纳处罚金额(元)</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label"><input type="checkbox" name="">开具发票</td>
+					<td ><a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true">上传</a></td>
+				</tr>
+
+				<tr>
+					<td class="label">是否采取强制措施</td>
+					<td colspan="3">
+						是<input type="radio" name=""> 否<input type="radio" name="">
+					</td>
+				</tr>
+				<tr>
+					<td class="label"></td>
+					<td colspan="3">
+						<li> <input type="checkbox" name="">银行缴纳，上传银行凭证  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true">上传</a>
+						<li> <input type="checkbox" name="">代缴，上传代缴凭证        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true">上传</a>
+					</td>
+				</tr>
+				<tr>
+					<td class="label">办理人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">日期</td>
+					<td ><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+				
+			</table>
+	    </form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" plain="true" id="btnWin_1">提交</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_1">暂存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_1').window('close');">关闭</a>
+	</div>		
+	<!-- end  缴纳处罚金  -->
+
+<!-- begin 结案报告   -->
+	<div id="win_2" class="easyui-dialog" title="结案报告" style="width:900px;height:340px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+			<table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+	    		<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr>
+					<td class="label">结案时间</td>
+					<td ><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+					<td class="label">承办人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>
+				<tr>
+					<td class="label">处罚结果</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label" >执行情况</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">执法人员</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">日期</td>
+					<td ><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>	
+				<tr>
+					<td class="label">实际赔偿金额</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">实际处罚金额</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>				
+			</table>
+		</form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_2">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_2').window('close');">关闭</a>
+	</div>	
+	<!-- end 结案报告  -->
+    
+
+	
+
+	
+
+	 <!-- begin 行政决定义务履行催告    -->
+	<div id="win_40" class="easyui-dialog" title="行政决定义务履行催告" style="width:900px;height:440px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+            <table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+				<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr>
+					<td class="label">文号</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:150px;"> 催告〔 <input class="easyui-validatebox" type="text" style="width:100px;"> 〕第 <input class="easyui-validatebox" type="text" style="width:80px;"> 号</td>
+				</tr>
+				<tr>
+					<td class="label">当事人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">联系地址</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>
+
+				<tr>
+					<td class="label">办理人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">日期</td>
+					<td ><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+			</table>
+			<div class="formPaper_div">
+				<h2>行政决定义务履行催告</h2>
+				<p>本机关于<input class="easyui-validatebox" type="text" style="width:60px;">年<input class="easyui-validatebox" type="text" style="width:30px;">月<input class="easyui-validatebox" type="text" style="width:30px;">日<input class="easyui-validatebox" type="text" style="width:30px;">时向你(单位)送达了：</p>
+				<li><input type="checkbox" name="">行政处罚决定书<input class="easyui-validatebox" type="text" style="width:100px;">(案号)，已经告知你(单位)在15日内（即<input class="easyui-validatebox" type="text" style="width:100px;">前）到<input class="easyui-validatebox" type="text" style="width:150px;">银行缴纳<input class="easyui-validatebox" type="text" style="width:80px;">元，账号为<input class="easyui-validatebox" type="text" style="width:150px;">。逾期不缴的依法每日按罚款数额的3%加处罚款。
+				<li><input type="checkbox" name=""><input class="easyui-validatebox" type="text" style="width:150px;">(案号)，并告知你(单位)<input class="easyui-validatebox" type="text" style="width:300px;">根据《中华人民共和国行政强制法》第三十五条规定，本机关向你发出催告，请你（单位）。
+				<li><input type="checkbox" name="">在十日内尽快履行缴纳罚款和加处罚款义务。
+				<li><input type="checkbox" name="">在三日内尽快履行<input class="easyui-validatebox" type="text" style="width:150px;">义务。
+				<p>根据《中华人民共和国行政强制法》第三十六条规定，你（单位）如对以上履行义务有异议的，可立即向本机关提出陈述申辩。逾期不履行义务的，本机关将</p>
+				<li><input type="checkbox" name="">《中华人民共和国行政强制法》第四十六条第三款的规定依法拍卖。
+				<li><input type="checkbox" name="">《中华人民共和国行政强制法》第五十三条，第五十四条的规定，申请人民法院强制执行。
+				<li><input type="checkbox" name="">《中华人民共和国行政强制法》第五十条的规定，实施代履行。
+			</div>
+	    </form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" plain="true" id="btnWin_40">提交</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_40">暂存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_40').window('close');">关闭</a>
+	</div>		
+	<!-- end  行政决定义务履行催告  -->
+
+<!-- begin 代履行决定    -->
+	<div id="win_41" class="easyui-dialog" title="代履行决定" style="width:900px;height:400px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+            <table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+				<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr>
+					<td class="label">文号</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:150px;"> 代决〔 <input class="easyui-validatebox" type="text" style="width:100px;"> 〕第 <input class="easyui-validatebox" type="text" style="width:80px;"> 号</td>
+				</tr>
+				<tr>
+					<td class="label">案由</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">立案依据</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">当事人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">联系地址</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>,
+				<tr>
+				<td class="label">申请行政复议单位</td>
+				<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">办理人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">日期</td>
+					<td ><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+			</table>
+			<div class="formPaper_div">
+				<h2>代履行决定</h2>
+				<li><input type="checkbox" name="">本机关于<input class="easyui-validatebox" type="text" style="width:60px;">年<input class="easyui-validatebox" type="text" style="width:30px;">月<input class="easyui-validatebox" type="text" style="width:30px;">日<input class="easyui-validatebox" type="text" style="width:30px;">时向你(单位)送达了<input class="easyui-validatebox" type="text" style="width:200px;">(案号：<input class="easyui-validatebox" type="text" style="width:150px;">)，你单位逾期未履行行政决定义务，经催告后仍未履行，后果已经或者将危害交通安全、造成环境污染或者破坏自然资源。本机关根据《中华人民共和国行政强制法》第五十条的规定，决定由<input class="easyui-validatebox" type="text" style="width:200px;">代你(单位)履行<input class="easyui-validatebox" type="text" style="width:250px;">义务，预计履行费用<input class="easyui-validatebox" type="text" style="width:80px;">，全部由你(单位)承担。
+				<li><input type="checkbox" name="">你单位需要立即清除道路、河道、航道或者公共场所的遗洒物、障碍物或者污染物，但未及时清除，后果已经或者将危害交通安全、造成环境污染或者破坏自然资源，本机关根据《中华人民共和国行政强制法》第五十二条的规定，决定立即实施代履行，预计代履行费用<input class="easyui-validatebox" type="text" style="width:80px;">，全部由你（单位）承担。
+			</div>
+	    </form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_41">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_41').window('close');">取消</a>
+	</div>		
+	<!-- end  代履行决定  -->
+
+	<!-- begin 限期拆除公告    -->
+	<div id="win_43" class="easyui-dialog" title="限期拆除公告" style="width:900px;height:400px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+            <table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+				<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr>
+					<td class="label">文号</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:150px;"> 责拆〔 <input class="easyui-validatebox" type="text" style="width:100px;"> 〕 <input class="easyui-validatebox" type="text" style="width:80px;"> 号</td>
+				</tr>
+				<tr>
+					<td class="label">当事人</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">案由</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">路线</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">桩号</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>
+				<tr>
+					<td class="label">设施名</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">违法条款</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">执法依据</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;" value="《中华人民共和国行政强制法》第四十四条"></td>
+				</tr>
+				<tr>
+					<td class="label">申请行政复议单位</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">责令拆除截止日期</td>
+					<td ><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+					<td class="label">通知日期</td>
+					<td ><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+			</table>
+	    </form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_43">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_43').window('close');">取消</a>
+	</div>		
+	<!-- end  代履行决定  -->
+
+	<!-- begin 行政强制执行申请    -->
+	<div id="win_45" class="easyui-dialog" title="行政强制执行申请" style="width:900px;height:400px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+            <table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+				<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr>
+					<td class="label">文号</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:150px;"> 强执〔 <input class="easyui-validatebox" type="text" style="width:100px;"> 〕 <input class="easyui-validatebox" type="text" style="width:80px;"> 号</td>
+				</tr>
+				<tr>
+					<td class="label">法院名称</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">立法依据</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">当事人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">催告日期</td>
+					<td ><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+				<tr>
+					<td class="label">基本情况</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">附有关材料</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">执法机关负责人</td>
+					<td ><select class="easyui-combobox"  style="width:150px;"></select></td>
+					<td class="label">申请日期</td>
+					<td ><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+				<tr>
+					<td class="label">联系人</td>
+					<td ><select class="easyui-combobox"  style="width:150px;"></select></td>
+					<td class="label">联系电话</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>
+			</table>
+	    </form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_45">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_45').window('close');">取消</a>
+	</div>		
+	<!-- end  行政强制执行申请  -->
+
+	<!-- begin 解除行政强制措施通知书    -->
+	<div id="win_46" class="easyui-dialog" title="解除行政强制措施通知书" style="width:900px;height:400px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+            <table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+				<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr>
+					<td class="label">文号</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:150px;"> 强措〔 <input class="easyui-validatebox" type="text" style="width:100px;"> 〕 <input class="easyui-validatebox" type="text" style="width:80px;"> 号</td>
+				</tr>
+				<tr>
+					<td class="label">案由</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">立法依据</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">当事人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">强解日期</td>
+					<td ><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+				<tr>
+					<td class="label">解除强制措施原因</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">办理人</td>
+					<td ><select class="easyui-combobox"  style="width:150px;"></select></td>
+					<td class="label">办理日期</td>
+					<td ><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+			</table>
+	    </form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_46">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_46').window('close');">取消</a>
+	</div>		
+	<!-- end  解除行政强制措施通知书  -->
+
+	<!-- begin 取回被扣留车辆（工具）收据    -->
+	<div id="win_47" class="easyui-dialog" title="取回被扣留车辆（工具）收据" style="width:900px;height:400px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+            <table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+				<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr>
+					<td class="label">案由</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">领取人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">领取日期</td>
+					<td ><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>				
+				<tr>
+					<td class="label">领取地点</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+
+				<tr>
+					<td class="label">取回车辆（工具）简况</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">办理人</td>
+					<td ><select class="easyui-combobox"  style="width:150px;"></select></td>
+					<td class="label">办理日期</td>
+					<td ><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+			</table>
+	    </form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_47">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_47').window('close');">取消</a>
+	</div>		
+	<!-- end  取回被扣留车辆（工具）收据  -->
+
+	
+<SCRIPT LANGUAGE="JavaScript">
+	   
+
+
+</SCRIPT>
+
+</body>
+</html>

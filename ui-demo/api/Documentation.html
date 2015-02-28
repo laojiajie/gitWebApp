@@ -1,0 +1,66 @@
+<!-- css and js -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Demo</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>Documentation</h3>
+<p>Each component of easyui has properties, methods and events. Users can extend them easily.</p>
+
+<h4>Properties</h4>
+<p>The properties is defined in jQuery.fn.{plugin}.defaults. For example, the dialog's properties is defined in jQuery.fn.dialog.defaults.</p>
+
+<h4>Events</h4>
+<p>The events(callback functions) is defined in jQuery.fn.{plugin}.defaults also.</p>
+
+<h4>Methods</h4>
+<p>
+The calling method syntax: $('selector').plugin('method', parameter);
+</p>
+<p>Where:</p><p>
+</p><ul>
+	<li><span style="font-style:italic">selector</span> is the jquery object selector.</li>
+	<li><span style="font-style:italic">plugin</span> is the plugin name.</li>
+	<li><span style="font-style:italic">method</span> is the existing method corresponding to the plugin.</li>
+	<li><span style="font-style:italic">parameter</span> is the parameter object, can be a object, string, ...</li>
+</ul>
+<p>
+The methods is defined in jQuery.fn.{plugin}.methods. 
+Each method has two parameters: jq and param. 
+The first parameter 'jq' is required, which refers to that jQuery object. 
+The second parameter 'param' refers to the really parameter that pass through the method. 
+For example, to extend a method named 'mymove' for the dialog component, the code looks like this:
+</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">.</span><span class="pln">extend</span><span class="pun">(</span><span class="pln">$</span><span class="pun">.</span><span class="pln">fn</span><span class="pun">.</span><span class="pln">dialog</span><span class="pun">.</span><span class="pln">methods</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span></li><li class="L1"><span class="pln">    mymove</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">jq</span><span class="pun">,</span><span class="pln"> newposition</span><span class="pun">){</span></li><li class="L2"><span class="pln">        </span><span class="kwd">return</span><span class="pln"> jq</span><span class="pun">.</span><span class="pln">each</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(){</span></li><li class="L3"><span class="pln">            $</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">).</span><span class="pln">dialog</span><span class="pun">(</span><span class="str">'move'</span><span class="pun">,</span><span class="pln"> newposition</span><span class="pun">);</span></li><li class="L4"><span class="pln">        </span><span class="pun">});</span></li><li class="L5"><span class="pln">    </span><span class="pun">}</span></li><li class="L6"><span class="pun">});</span></li></ol></pre>
+<p>Now you can call 'mymove' method to move the dialog to specified position:</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'#dd'</span><span class="pun">).</span><span class="pln">dialog</span><span class="pun">(</span><span class="str">'mymove'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span></li><li class="L1"><span class="pln">    left</span><span class="pun">:</span><span class="pln"> </span><span class="lit">200</span><span class="pun">,</span></li><li class="L2"><span class="pln">    top</span><span class="pun">:</span><span class="pln"> </span><span class="lit">100</span></li><li class="L3"><span class="pun">});</span></li></ol></pre>
+
+<h3>Getting Started with jQuery EasyUI</h3>
+<p>
+Download the library and include EasyUI CSS and JavaScript files on your page.
+</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;link</span><span class="pln"> </span><span class="atn">rel</span><span class="pun">=</span><span class="atv">"stylesheet"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text/css"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"easyui/themes/default/easyui.css"</span><span class="tag">&gt;</span></li><li class="L1"><span class="tag">&lt;link</span><span class="pln"> </span><span class="atn">rel</span><span class="pun">=</span><span class="atv">"stylesheet"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text/css"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"easyui/themes/icon.css"</span><span class="tag">&gt;</span></li><li class="L2"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text/javascript"</span><span class="pln"> </span><span class="atn">src</span><span class="pun">=</span><span class="atv">"easyui/jquery-1.7.2.min.js"</span><span class="tag">&gt;&lt;/script&gt;</span></li><li class="L3"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text/javascript"</span><span class="pln"> </span><span class="atn">src</span><span class="pun">=</span><span class="atv">"easyui/jquery.easyui.min.js"</span><span class="tag">&gt;&lt;/script&gt;</span></li></ol></pre>
+<p>
+Once you've included the EasyUI necessary files, you can define an EasyUI component from markup or using JavaScript.
+For example, to define a panel with collapsible functionality, you can write the HTML code like this:
+</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"p"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-panel"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">500px</span><span class="pun">;</span><span class="pln">height</span><span class="pun">:</span><span class="lit">200px</span><span class="pun">;</span><span class="pln">padding</span><span class="pun">:</span><span class="lit">10px</span><span class="pun">;</span><span class="atv">"</span></li><li class="L1"><span class="pln">        </span><span class="atn">title</span><span class="pun">=</span><span class="atv">"My Panel"</span><span class="pln"> </span><span class="atn">iconCls</span><span class="pun">=</span><span class="atv">"icon-save"</span><span class="pln"> </span><span class="atn">collapsible</span><span class="pun">=</span><span class="atv">"true"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    The panel content</span></li><li class="L3"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
+<p>
+When creating a component from markup, the 'data-options' attribute can be used to support HTML5 compliant attribute names since version 1.3.
+So you can rewrite the code above as:
+</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"p"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-panel"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">500px</span><span class="pun">;</span><span class="pln">height</span><span class="pun">:</span><span class="lit">200px</span><span class="pun">;</span><span class="pln">padding</span><span class="pun">:</span><span class="lit">10px</span><span class="pun">;</span><span class="atv">"</span></li><li class="L1"><span class="pln">        </span><span class="atn">title</span><span class="pun">=</span><span class="atv">"My Panel"</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"iconCls:'icon-save',collapsible:true"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    The panel content</span></li><li class="L3"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
+<p>
+The code below shows how to create a combobox that bind 'onSelect' event.
+</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-combobox"</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"language"</span></li><li class="L1"><span class="pln">        </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"</span></li><li class="L2"><span class="atv">            url:'combobox_data.json',</span></li><li class="L3"><span class="atv">            valueField:'id',</span></li><li class="L4"><span class="atv">            textField:'text',</span></li><li class="L5"><span class="atv">            panelHeight:'auto',</span></li><li class="L6"><span class="atv">            onSelect:function(record){</span></li><li class="L7"><span class="atv">                alert(record.text)</span></li><li class="L8"><span class="atv">            }"</span><span class="tag">&gt;</span></li></ol></pre>
+
+</div>
+</body>
+</html>

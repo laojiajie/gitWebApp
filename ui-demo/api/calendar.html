@@ -1,0 +1,166 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>calendar</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>Calendar</h3>
+<p>Override defaults with $.fn.calendar.defaults.</p>
+<p>
+The calendar display one month calendar that allows the user to select dates and move to the next or previous month.
+By default, the first day of week is set to sunday.
+It can be changed by setting the value of 'firstDay' property.
+</p>
+<img src="images/calendar.png">
+
+<h4>Usage Example</h4>
+<p>Create calendar from markup.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"cc"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-calendar"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">180px</span><span class="pun">;</span><span class="pln">height</span><span class="pun">:</span><span class="lit">180px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li></ol></pre>
+<p>Create calendar using javascript.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"cc"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">180px</span><span class="pun">;</span><span class="pln">height</span><span class="pun">:</span><span class="lit">180px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li></ol></pre>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'#cc'</span><span class="pun">).</span><span class="pln">calendar</span><span class="pun">({</span></li><li class="L1"><span class="pln">    current</span><span class="pun">:</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Date</span><span class="pun">()</span></li><li class="L2"><span class="pun">});</span></li></ol></pre>
+
+<h4>Properties</h4>
+<table class="doc-table">
+<tbody><tr>
+
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Default</strong></th>
+</tr>
+<tr>
+<td>width</td>
+<td>number</td>
+<td>The width of calendar component.</td>
+<td>180</td>
+
+</tr>
+<tr>
+<td>height</td>
+<td>number</td>
+<td>The height of calendar component.</td>
+<td>180</td>
+</tr>
+<tr>
+<td>fit</td>
+<td>boolean</td>
+<td>When true to set the calendar size fit it's parent container.</td>
+
+<td>false</td>
+</tr>
+<tr>
+<td>border</td>
+<td>boolean</td>
+<td>Defines if to show the border.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>firstDay</td>
+<td>number</td>
+<td>Defines the first day of week. Sunday is 0, Monday is 1, ...</td>
+<td>0</td>
+</tr>
+<tr>
+<td>weeks</td>
+<td>array</td>
+
+<td>The list of week to be showed.</td>
+<td>['S','M','T','W','T','F','S']</td>
+</tr>
+<tr>
+<td>months</td>
+<td>array</td>
+<td>The list of month to be showed.</td>
+<td>['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']</td>
+</tr>
+<tr>
+<td>year</td>
+
+<td>number</td>
+<td>
+The year of calendar.
+The example below shows how to create a calendar using the specified year and month.
+<pre>&lt;div class="easyui-calendar" data-options="year:2012,month:6" /&gt;
+</pre>
+</td>
+<td>current year(four digits)</td>
+</tr>
+<tr>
+<td>month</td>
+<td>number</td>
+<td>The month of calendar.</td>
+<td>current month, start with 1</td>
+</tr>
+
+<tr>
+<td>current</td>
+<td>Date</td>
+<td>The current date.</td>
+<td>current date</td>
+</tr>
+</tbody></table>
+
+<h4>Events</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameters</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>onSelect</td>
+<td>date</td>
+<td>
+Fires when user select a date.
+<p>Code example:</p>
+<pre>$('#cc').calendar({
+	onSelect: function(date){
+		alert(date.getFullYear()+":"+(date.getMonth()+1)+":"+date.getDate());
+	}
+});
+</pre>
+</td>
+
+</tr>
+</tbody></table>
+
+<h4>Methods</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+
+</tr>
+<tr>
+<td>options</td>
+<td>none</td>
+<td>Return the options object.</td>
+</tr>
+<tr>
+<td>resize</td>
+<td>none</td>
+<td>Resize the calendar size.</td>
+</tr>
+
+<tr>
+<td>moveTo</td>
+<td>date</td>
+<td>
+Move the calendar to specified date.
+<p>Code example:</p>
+<pre>$('#cc').calendar('moveTo', new Date(2012, 6, 1));
+</pre>
+</td>
+</tr>
+</tbody></table>
+
+</div>
+</body>
+</html>

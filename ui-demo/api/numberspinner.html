@@ -1,0 +1,73 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>numberspinner</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>NumberSpinner</h3>
+<p>Extend from $.fn.spinner.defaults and $.fn.numberbox.defaults. Override defaults with $.fn.numberspinner.defaults.</p>
+<p>
+The numberspinner is created based on spinner and numberbox.
+It can convert the inputed value into different types such as numeric, percentage, current, etc.
+It also allows the user to scroll to a desired value using the up/down spinner buttons.
+</p>
+<img src="images/numberspinner.png">
+
+<h4>Dependencies</h4>
+<ul>
+	<li>spinner</li>
+	<li>numberbox</li>
+</ul>
+
+<h4>Usage Example</h4>
+<p>Create numberspinner from markup.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"ss"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-numberspinner"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">80px</span><span class="pun">;</span><span class="atv">"</span></li><li class="L1"><span class="pln">        </span><span class="atn">required</span><span class="pun">=</span><span class="atv">"required"</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"min:10,max:100,editable:false"</span><span class="tag">&gt;</span></li></ol></pre>
+<p>Create numberspinner using javascript.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"ss"</span><span class="pln"> </span><span class="atn">required</span><span class="pun">=</span><span class="atv">"required"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">80px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;</span></li></ol></pre>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'#ss'</span><span class="pun">).</span><span class="pln">numberspinner</span><span class="pun">({</span></li><li class="L1"><span class="pln">    min</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pun">,</span></li><li class="L2"><span class="pln">    max</span><span class="pun">:</span><span class="pln"> </span><span class="lit">100</span><span class="pun">,</span></li><li class="L3"><span class="pln">    editable</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span></li><li class="L4"><span class="pun">});</span></li></ol></pre>
+<p>Create numberspinner and format the number as a currency string.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-numberspinner"</span><span class="pln"> </span><span class="atn">value</span><span class="pun">=</span><span class="atv">"1234567890"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">150px</span><span class="pun">;</span><span class="atv">"</span></li><li class="L1"><span class="pln">        </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"required:true,precision:2,groupSeparator:',',decimalSeparator:'.',prefix:'$'"</span><span class="tag">&gt;</span></li></ol></pre>
+
+<h4>Properties</h4>
+<p>The properties extend from spinner and numberbox.</p>
+
+<h4>Events</h4>
+<p>The events extend from spinner.</p>
+
+<h4>Methods</h4>
+<p>The methods extend from spinner, below is the overridden methods for numberspinner.</p>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>options</td>
+<td>none</td>
+<td>Return the options object.</td>
+</tr>
+<tr>
+<td>setValue</td>
+<td>value</td>
+
+<td>
+Set the numberspinner value.
+<p>Code example:</p>
+<pre>$('#ss').numberspinner('setValue', 8234725);  // set value
+var v = $('#ss').numberspinner('getValue');  // get value
+alert(v)
+</pre>
+</td>
+</tr>
+</tbody></table>
+
+</div>
+</body>
+</html>

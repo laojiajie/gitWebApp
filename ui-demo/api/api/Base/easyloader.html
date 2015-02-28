@@ -1,0 +1,138 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>easyloader</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>EasyLoader</h3>
+<h4>Usage</h4>
+<h5>Load EasyUI module</h5>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">easyloader</span><span class="pun">.</span><span class="kwd">base</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="str">'../'</span><span class="pun">;</span><span class="pln">    </span><span class="com">// set the easyui base directory</span></li><li class="L1"><span class="pln">easyloader</span><span class="pun">.</span><span class="pln">load</span><span class="pun">(</span><span class="str">'messager'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(){</span><span class="pln">        </span><span class="com">// load the specified module</span></li><li class="L2"><span class="pln">    $</span><span class="pun">.</span><span class="pln">messager</span><span class="pun">.</span><span class="pln">alert</span><span class="pun">(</span><span class="str">'Title'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'load ok'</span><span class="pun">);</span></li><li class="L3"><span class="pun">});</span></li></ol></pre>
+<h5>Load script from an absolute url</h5>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="kwd">using</span><span class="pun">(</span><span class="str">'http://code.jquery.com/jquery-1.4.4.min.js'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(){</span></li><li class="L1"><span class="pln">    </span><span class="com">// ...</span></li><li class="L2"><span class="pun">});</span></li></ol></pre>
+<h5>Load script from relative url</h5>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="com">// the script path relative to easyui directory</span></li><li class="L1"><span class="kwd">using</span><span class="pun">(</span><span class="str">'./myscript.js'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(){</span></li><li class="L2"><span class="pln">    </span><span class="com">// ...</span></li><li class="L3"><span class="pun">});</span></li></ol></pre>
+
+<h4>Properties</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+
+<th><strong>Description</strong></th>
+<th><strong>Default</strong></th>
+</tr>
+<tr>
+<td>modules</td>
+<td>object</td>
+<td>Predefined modules.</td>
+<td></td>
+</tr>
+<tr>
+<td>locales</td>
+
+<td>object</td>
+<td>Predefined locales.</td>
+<td></td>
+</tr>
+<tr>
+<td>base</td>
+<td>string</td>
+<td>The easyui base directory, must end with '/'.</td>
+<td>The base directory will be auto setted relative to easyload.js</td>
+</tr>
+<tr>
+
+<td>theme</td>
+<td>string</td>
+<td>The name of theme that defined in 'themes' directory</td>
+<td>default</td>
+</tr>
+<tr>
+<td>css</td>
+<td>boolean</td>
+<td>Defines if loading css file when loading module</td>
+<td>true</td>
+
+</tr>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>The locale name</td>
+<td>null</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>number</td>
+<td>Timeout value in milliseconds. Fires if a timeout occurs.</td>
+
+<td>2000</td>
+</tr>
+</tbody></table>
+
+<h4>Defined locales</h4>
+<ul>
+<li>af</li>
+<li>bg</li>
+<li>ca</li>
+<li>cs</li>
+<li>cz</li>
+<li>da</li>
+<li>de</li>
+<li>en</li>
+<li>es</li>
+<li>fr</li>
+<li>nl</li>
+<li>tr</li>
+<li>zh_CN</li>
+<li>zh_TW</li>
+</ul>
+
+<h4>Events</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameters</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>onProgress</td>
+<td>name</td>
+
+<td>Fires when a module is loaded successfully.</td>
+</tr>
+<tr>
+<td>onLoad</td>
+<td>name</td>
+<td>Fires when a module and it's dependencies are loaded successfully.</td>
+</tr>
+</tbody></table>
+
+<h4>Methods</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>load</td>
+<td>module, callback</td>
+
+<td>Load the specified module. When load success a callback function will be called.<br>
+The module parameter valid type are:<br>
+a single module name<br>
+an module array<br>
+a css file that end with '.css'<br>
+a js file that end with '.js'</td>
+</tr>
+</tbody></table>
+
+</div>
+</body>
+</html>

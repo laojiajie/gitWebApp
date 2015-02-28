@@ -1,0 +1,534 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>panel</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>Panel</h3>
+<p>Override defaults with $.fn.panel.defaults.</p>
+<p>
+The panel is used as a container for other contents. 
+It is the base component for building other components such as layout, tabs, accordion, etc.
+It also provides built-in collapsible, closable, maximizable and minimizable behavior and other customized behavior.
+Panels can be easily embedded into any position of web page.
+</p>
+<img src="images/panel.png">
+
+<h4>Usage Example</h4>
+
+<h5>Create Panel</h5>
+<p>1. Create Panel via markup</p>
+<p>Creation from markup is even easier. Add 'easyui-panel' class to &lt;div/&gt; markup.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"p"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-panel"</span><span class="pln"> </span><span class="atn">title</span><span class="pun">=</span><span class="atv">"My Panel"</span><span class="pln"> </span></li><li class="L1"><span class="pln">        </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">500px</span><span class="pun">;</span><span class="pln">height</span><span class="pun">:</span><span class="lit">150px</span><span class="pun">;</span><span class="pln">padding</span><span class="pun">:</span><span class="lit">10px</span><span class="pun">;</span><span class="pln">background</span><span class="pun">:#</span><span class="pln">fafafa</span><span class="pun">;</span><span class="atv">"</span></li><li class="L2"><span class="pln">        </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"iconCls:'icon-save',closable:true,</span></li><li class="L3"><span class="atv">                collapsible:true,minimizable:true,maximizable:true"</span><span class="tag">&gt;</span></li><li class="L4"><span class="pln">    </span><span class="tag">&lt;p&gt;</span><span class="pln">panel content.</span><span class="tag">&lt;/p&gt;</span></li><li class="L5"><span class="pln">    </span><span class="tag">&lt;p&gt;</span><span class="pln">panel content.</span><span class="tag">&lt;/p&gt;</span></li><li class="L6"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
+
+<p>2. Create Panel programatically</p>
+<p>Let's create panel with tools on top right.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"p"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">padding</span><span class="pun">:</span><span class="lit">10px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">    </span><span class="tag">&lt;p&gt;</span><span class="pln">panel content.</span><span class="tag">&lt;/p&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;p&gt;</span><span class="pln">panel content.</span><span class="tag">&lt;/p&gt;</span></li><li class="L3"><span class="tag">&lt;/div&gt;</span></li><li class="L4"><span class="pln"> </span></li><li class="L5"><span class="pln">$('#p').panel({</span></li><li class="L6"><span class="pln">    width:500,</span></li><li class="L7"><span class="pln">    height:150,</span></li><li class="L8"><span class="pln">    title:'My Panel',</span></li><li class="L9"><span class="pln">    tools:[{</span></li><li class="L0"><span class="pln">        iconCls:'icon-add',</span></li><li class="L1"><span class="pln">        handler:function(){alert('new')}</span></li><li class="L2"><span class="pln">    },{</span></li><li class="L3"><span class="pln">        iconCls:'icon-save',</span></li><li class="L4"><span class="pln">        handler:function(){alert('save')}</span></li><li class="L5"><span class="pln">    }]</span></li><li class="L6"><span class="pln">}); </span></li></ol></pre>
+
+<h5>Move Panel</h5>
+<p>Call 'move' method to move panel to a new position</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'#p'</span><span class="pun">).</span><span class="pln">panel</span><span class="pun">(</span><span class="str">'move'</span><span class="pun">,{</span></li><li class="L1"><span class="pln">    left</span><span class="pun">:</span><span class="lit">100</span><span class="pun">,</span></li><li class="L2"><span class="pln">    top</span><span class="pun">:</span><span class="lit">100</span></li><li class="L3"><span class="pun">});</span><span class="pln">    </span></li></ol></pre>
+
+<h5>Load Content</h5>
+<p>Let's load the panel content via ajax and show some message when loaded successfully.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'#p'</span><span class="pun">).</span><span class="pln">panel</span><span class="pun">({</span></li><li class="L1"><span class="pln">    href</span><span class="pun">:</span><span class="str">'content_url.php'</span><span class="pun">,</span></li><li class="L2"><span class="pln">    onLoad</span><span class="pun">:</span><span class="kwd">function</span><span class="pun">(){</span></li><li class="L3"><span class="pln">        alert</span><span class="pun">(</span><span class="str">'loaded successfully'</span><span class="pun">);</span></li><li class="L4"><span class="pln">    </span><span class="pun">}</span></li><li class="L5"><span class="pun">});</span></li></ol></pre>
+
+<h4>Properties</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+
+<th><strong>Default</strong></th>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>The id attribute of this panel.</td>
+<td>null</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>The title text to display in panel header.</td>
+<td>null</td>
+</tr>
+<tr>
+<td>iconCls</td>
+<td>string</td>
+
+<td>A CSS class to display a 16x16 icon in panel.</td>
+<td>null</td>
+</tr>
+<tr>
+<td>width</td>
+<td>number</td>
+<td>Set the panel width.</td>
+<td>auto</td>
+</tr>
+<tr>
+<td>height</td>
+
+<td>number</td>
+<td>Set the panel height.</td>
+<td>auto</td>
+</tr>
+<tr>
+<td>left</td>
+<td>number</td>
+<td>Set the panel left position.</td>
+<td>null</td>
+</tr>
+
+<tr>
+<td>top</td>
+<td>number</td>
+<td>Set the panel top position.</td>
+<td>null</td>
+</tr>
+<tr>
+<td>cls</td>
+<td>string</td>
+<td>Add a CSS class to the panel.</td>
+
+<td>null</td>
+</tr>
+<tr>
+<td>headerCls</td>
+<td>string</td>
+<td>Add a CSS class to the panel header.</td>
+<td>null</td>
+</tr>
+<tr>
+<td>bodyCls</td>
+<td>string</td>
+
+<td>Add a CSS class to the panel body.</td>
+<td>null</td>
+</tr>
+<tr>
+<td>style</td>
+<td>object</td>
+<td>
+Add a custom specification style to the panel.
+<p>Code example to change the panel border width:</p>
+<pre style="color:#006600">&lt;div class="easyui-panel" style="width:200px;height:100px"
+		data-options="style:{borderWidth:2}"&gt;
+&lt;/div&gt;
+</pre>
+</td>
+<td>{}</td>
+</tr>
+<tr>
+<td>fit</td>
+
+<td>boolean</td>
+<td>
+When true to set the panel size fit it's parent container.
+The example below shows a panel which can be auto resized to max inner dimensions of its parent container
+<pre style="color:#006600">&lt;div style="width:200px;height:100px;padding:5px"&gt;
+	&lt;div class="easyui-panel" style="width:200px;height:100px"
+			data-options="fit:true,border:false"&gt;
+		Embedded Panel
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</td>
+<td>false</td>
+</tr>
+<tr>
+<td>border</td>
+<td>boolean</td>
+<td>Defines if to show panel border.</td>
+<td>true</td>
+</tr>
+
+<tr>
+<td>doSize</td>
+<td>boolean</td>
+<td>If set to true,the panel will be resize and do layout when created.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>noheader</td>
+<td>boolean</td>
+<td>If set to true, the panel header will not be created.</td>
+
+<td>false</td>
+</tr>
+<tr>
+<td>content</td>
+<td>string</td>
+<td>The panel body content.</td>
+<td>null</td>
+</tr>
+<tr>
+<td>collapsible</td>
+<td>boolean</td>
+
+<td>Defines if to show collapsible button.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>minimizable</td>
+<td>boolean</td>
+<td>Defines if to show minimizable button.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>maximizable</td>
+
+<td>boolean</td>
+<td>Defines if to show maximizable button.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>closable</td>
+<td>boolean</td>
+<td>Defines if to show closable button.</td>
+<td>false</td>
+</tr>
+
+<tr>
+<td>tools</td>
+<td>array,selector</td>
+<td>
+Custom tools, possible values:<br>
+1) an array, each element contains iconCls and handler properties. <br>
+2) a selector that indicating the tools<br>
+<p>The panel tools can be declared with exists &lt;div&gt; tag:</p>
+<pre>&lt;div class="easyui-panel" style="width:300px;height:200px"
+		title="My Panel" data-options="iconCls:'icon-ok',tools:'#tt'"&gt;
+&lt;/div&gt;
+&lt;div id="tt"&gt;
+	&lt;a href="#" class="icon-add" onclick="javascript:alert('add')"&gt;&lt;/a&gt;
+	&lt;a href="#" class="icon-edit" onclick="javascript:alert('edit')"&gt;&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+<p>The panel tools can also be defined via array:</p>
+<pre>&lt;div class="easyui-panel" style="width:300px;height:200px"
+		title="My Panel" data-options="iconCls:'icon-ok',tools:[
+				{
+					iconCls:'icon-add',
+					handler:function(){alert('add')}
+				},{
+					iconCls:'icon-edit',
+					handler:function(){alert('edit')}
+				}]"&gt;
+&lt;/div&gt;
+</pre>
+</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>collapsed</td>
+<td>boolean</td>
+<td>Defines if the panel is collapsed at initialization.</td>
+
+<td>false</td>
+</tr>
+<tr>
+<td>minimized</td>
+<td>boolean</td>
+<td>Defines if the panel is minimized at initialization.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>maximized</td>
+<td>boolean</td>
+
+<td>Defines if the panel is maximized at initialization.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>boolean</td>
+<td>Defines if the panel is closed at initialization.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>href</td>
+
+<td>string</td>
+<td>
+A URL to load remote data and then display in the panel.
+Notice that the content will not be loaded until the panel is open and expand.
+This is useful to create a lazy loading panel:
+<pre>&lt;div id="pp" class="easyui-panel" style="width:300px;height:200px"
+		data-options="href='get_content.php',closed:true"&gt;
+&lt;/div&gt;
+&lt;a href="#" onclick="javascript:$('#pp').panel('open')"&gt;Open&lt;/a&gt;
+</pre>
+</td>
+<td>null</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>boolean</td>
+<td>True to cache the panel content that loaded from href.</td>
+<td>true</td>
+</tr>
+
+<tr>
+<td>loadingMessage</td>
+<td>string</td>
+<td>When loading remote data show a message in the panel.</td>
+<td>Loading¡­</td>
+</tr>
+<tr>
+<td>extractor</td>
+<td>function</td>
+<td>
+Defines how to extract the content from ajax response, return extracted data.
+<pre>extractor: function(data){
+	var pattern = /&lt;body[^&gt;]*&gt;((.|[\n\r])*)&lt;\/body&gt;/im;
+	var matches = pattern.exec(data);
+	if (matches){
+		return matches[1];	// only extract body content
+	} else {
+		return data;
+	}
+}
+</pre>
+</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h4>Events</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameters</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>onLoad</td>
+<td>none</td>
+<td>Fires when remote data is loaded.</td>
+
+</tr>
+<tr>
+<td>onBeforeOpen</td>
+<td>none</td>
+<td>Fires before panel is opened, return false to stop the open.</td>
+</tr>
+<tr>
+<td>onOpen</td>
+<td>none</td>
+<td>Fires after panel is opened.</td>
+</tr>
+
+<tr>
+<td>onBeforeClose</td>
+<td>none</td>
+<td>
+Fires before panel is closed, return false to cancel the close.
+The panel declared below cannot be closed.
+<pre>&lt;div class="easyui-panel" style="width:300px;height:200px;"
+		title="My Panel" data-options="onBeforeClose:function(){return false}"&gt;
+	The panel cannot be closed.
+&lt;/div&gt;
+</pre>
+</td>
+</tr>
+<tr>
+<td>onClose</td>
+<td>none</td>
+<td>Fires after panel is closed.</td>
+</tr>
+<tr>
+
+<td>onBeforeDestroy</td>
+<td>none</td>
+<td>Fires before panel is destroyed, return false to cancel the destroy.</td>
+</tr>
+<tr>
+<td>onDestroy</td>
+<td>none</td>
+<td>Fires after panel is destroyed.</td>
+</tr>
+<tr>
+<td>onBeforeCollapse</td>
+
+<td>none</td>
+<td>Fires before panel is collapsed, return false to stop the collapse.</td>
+</tr>
+<tr>
+<td>onCollapse</td>
+<td>none</td>
+<td>Fires after panel is collpased.</td>
+</tr>
+<tr>
+<td>onBeforeExpand</td>
+<td>none</td>
+
+<td>Fires before panel is expanded, return false to stop the expand.</td>
+</tr>
+<tr>
+<td>onExpand</td>
+<td>none</td>
+<td>Fires after panel is expanded.</td>
+</tr>
+<tr>
+<td>onResize</td>
+<td>width, height</td>
+<td>Fires after panel is resized.<br>
+
+width: the new outer width<br>
+height: the new outer height</td>
+</tr>
+<tr>
+<td>onMove</td>
+<td>left,top</td>
+<td>Fires after panel is moved.<br>
+left: the new left postion<br>
+top: the new top position</td>
+</tr>
+
+<tr>
+<td>onMaximize</td>
+<td>none</td>
+<td>Fires after the window has been maximized.</td>
+</tr>
+<tr>
+<td>onRestore</td>
+<td>none</td>
+<td>Fires after the window has been restored to its original size.</td>
+</tr>
+<tr>
+
+<td>onMinimize</td>
+<td>none</td>
+<td>Fires after the window has been minimized.</td>
+</tr>
+</tbody></table>
+
+<h4>Methods</h4>
+<table class="doc-table">
+
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>options</td>
+<td>none</td>
+<td>Return options property.</td>
+</tr>
+<tr>
+
+<td>panel</td>
+<td>none</td>
+<td>Return the outer panel object.</td>
+</tr>
+<tr>
+<td>header</td>
+<td>none</td>
+<td>Return the panel header object.</td>
+</tr>
+<tr>
+<td>body</td>
+
+<td>none</td>
+<td>Return the panel body object.</td>
+</tr>
+<tr>
+<td>setTitle</td>
+<td>title</td>
+<td>Set the title text of header.</td>
+</tr>
+<tr>
+<td>open</td>
+<td>forceOpen</td>
+
+<td>When forceOpen parameter set to true, the panel is opened bypass the onBeforeOpen callback.</td>
+</tr>
+<tr>
+<td>close</td>
+<td>forceClose</td>
+<td>When forceClose parameter set to true, the panel is closed bypass the onBeforeClose callback.</td>
+</tr>
+<tr>
+<td>destroy</td>
+<td>forceDestroy</td>
+<td>When forceDestroy parameter set to true, the panel is destroyed bypass the onBeforeDestroy callback.</td>
+
+</tr>
+<tr>
+<td>refresh</td>
+<td>href</td>
+<td>
+Refresh the panel to load remote data.
+If the 'href' parameter is assigned, it will override the old 'href' property.
+<p>Code example:</p>
+<pre>// open a panel and then refresh its contents.
+$('#pp').panel('open').panel('refresh');
+// refresh contents with a new URL.
+$('#pp').panel('open').panel('refresh','new_content.php');
+</pre>
+</td>
+</tr>
+<tr>
+<td>resize</td>
+<td>options</td>
+<td>Set panel size and do layout. The options object contains following properties:<br>
+width: the new panel width<br>
+height: the new panel height<br>
+left: the new panel left position<br>
+top: the new panel top position
+<p>Code example:</p>
+<pre>$('#pp').panel('resize',{
+	width: 600,
+	height: 400
+});
+</pre>
+</td>
+</tr>
+<tr>
+<td>move</td>
+<td>options</td>
+<td>Move the panel to a new position. The options object contains following properties:<br>
+left: the new panel left position<br>
+top: the new panel top position</td>
+
+</tr>
+<tr>
+<td>maximize</td>
+<td>none</td>
+<td>Fits the panel winthin its container.</td>
+</tr>
+<tr>
+<td>minimize</td>
+<td>none</td>
+<td>Minimizing the panel.</td>
+</tr>
+
+<tr>
+<td>restore</td>
+<td>none</td>
+<td>Restores the maximized panel back to its original size and position.</td>
+</tr>
+<tr>
+<td>collapse</td>
+<td>animate</td>
+<td>Collapses the panel body.</td>
+</tr>
+<tr>
+
+<td>expand</td>
+<td>animate</td>
+<td>Expand the panel body.</td>
+</tr>
+</tbody></table>
+
+</div>
+</body>
+</html>

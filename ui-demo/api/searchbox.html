@@ -1,0 +1,167 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>searchbox</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>SearchBox</h3>
+<p>Override defaults with $.fn.searchbox.defaults.</p>
+<p>
+The searchbox prompt the user to enter search value.
+It can combine a menu that allows the user to select different searching category.
+The searching action will be executed when the user press ENTER key or click the search button on the right of component.
+</p>
+<img src="images/searchbox.png">
+
+<h4>Dependencies</h4>
+<ul>
+	<li>menubutton</li>
+</ul>
+
+<h4>Usage Example</h4>
+<h5>Create SearchBox</h5>
+<p>1. Create from markup. Add 'easyui-searchbox' class to &lt;input/&gt; markup.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text/javascript"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">    </span><span class="kwd">function</span><span class="pln"> qq</span><span class="pun">(</span><span class="pln">value</span><span class="pun">,</span><span class="pln">name</span><span class="pun">){</span></li><li class="L2"><span class="pln">        alert</span><span class="pun">(</span><span class="pln">value</span><span class="pun">+</span><span class="str">":"</span><span class="pun">+</span><span class="pln">name</span><span class="pun">)</span></li><li class="L3"><span class="pln">    </span><span class="pun">}</span></li><li class="L4"><span class="tag">&lt;/script&gt;</span></li><li class="L5"><span class="pln"> </span></li><li class="L6"><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"ss"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-searchbox"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">300px</span><span class="atv">"</span></li><li class="L7"><span class="pln">        </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"searcher:qq,prompt:'Please Input Value',menu:'#mm'"</span><span class="tag">&gt;&lt;/input&gt;</span></li><li class="L8"><span class="pln">        </span></li><li class="L9"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"mm"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">120px</span><span class="atv">"</span><span class="tag">&gt;</span></li><li class="L0"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"name:'all',iconCls:'icon-ok'"</span><span class="tag">&gt;</span><span class="pln">All News</span><span class="tag">&lt;/div&gt;</span></li><li class="L1"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"name:'sports'"</span><span class="tag">&gt;</span><span class="pln">Sports News</span><span class="tag">&lt;/div&gt;</span></li><li class="L2"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
+<p>2. Create programatically.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"ss"</span><span class="tag">&gt;&lt;/input&gt;</span></li><li class="L1"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"mm"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">120px</span><span class="atv">"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"name:'all',iconCls:'icon-ok'"</span><span class="tag">&gt;</span><span class="pln">All News</span><span class="tag">&lt;/div&gt;</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"name:'sports'"</span><span class="tag">&gt;</span><span class="pln">Sports News</span><span class="tag">&lt;/div&gt;</span></li><li class="L4"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'#ss'</span><span class="pun">).</span><span class="pln">searchbox</span><span class="pun">({</span></li><li class="L1"><span class="pln">    searcher</span><span class="pun">:</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">value</span><span class="pun">,</span><span class="pln">name</span><span class="pun">){</span></li><li class="L2"><span class="pln">        alert</span><span class="pun">(</span><span class="pln">value </span><span class="pun">+</span><span class="pln"> </span><span class="str">","</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> name</span><span class="pun">)</span></li><li class="L3"><span class="pln">    </span><span class="pun">},</span></li><li class="L4"><span class="pln">    menu</span><span class="pun">:</span><span class="str">'#mm'</span><span class="pun">,</span></li><li class="L5"><span class="pln">    prompt</span><span class="pun">:</span><span class="str">'Please Input Value'</span></li><li class="L6"><span class="pun">});</span></li></ol></pre>
+
+<br>
+<h4>Properties</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Default</strong></th>
+</tr>
+<tr>
+<td>width</td>
+<td>number</td>
+<td>The width of the component.</td>
+<td>auto</td>
+</tr>
+<tr>
+<td>height</td>
+<td>number</td>
+<td>The height of the component. This property is available since version 1.3.2.</td>
+<td>22</td>
+</tr>
+<tr>
+<td>prompt</td>
+<td>string</td>
+<td>The prompt message to be displayed in input box.</td>
+<td>''</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>The inputed value.</td>
+<td>''</td>
+</tr>
+<tr>
+<td>menu</td>
+<td>selector</td>
+<td>
+The search type menu. Each menu item can has below attribute:<br>
+name: the search type name.<br>
+selected: current selected search type name.
+<p>The example below shows how to define a selected searching type name.</p>
+<pre>&lt;input class="easyui-searchbox" style="width:300px" data-options="menu:'#mm'" /&gt;
+&lt;div id="mm" style="width:150px"&gt;
+	&lt;div data-options="name:'item1'"&gt;Search Item1&lt;/div&gt;
+	&lt;div data-options="name:'item2',selected:true"&gt;Search Item2&lt;/div&gt;
+	&lt;div data-options="name:'item3'"&gt;Search Item3&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</td>
+<td>null</td>
+</tr>
+<tr>
+<td>searcher</td>
+<td>function(value,name)</td>
+<td>The searcher function that will be called when user presses the searching button or press ENTER key.</td>
+<td>null</td>
+</tr>
+</tbody></table>
+
+<h4>Methods</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>options</td>
+<td>none</td>
+<td>Return the options object.</td>
+</tr>
+<tr>
+<td>menu</td>
+<td>none</td>
+<td>
+Return the search type menu object.
+The example below shows how to change the menu item icon.
+<pre>var m = $('#ss').searchbox('menu');  // get the menu object
+var item = m.menu('findItem', 'Sports News');  // find the menu item
+// change the menu item icon
+m.menu('setIcon', {
+	target: item.target,
+	iconCls: 'icon-save'
+});
+// select the searching type name
+$('#ss').searchbox('selectName', 'sports');
+</pre>
+</td>
+</tr>
+<tr>
+<td>textbox</td>
+<td>none</td>
+<td>Return the text box object.</td>
+</tr>
+<tr>
+<td>getValue</td>
+<td>none</td>
+<td>Return the current searching value.</td>
+</tr>
+<tr>
+<td>setValue</td>
+<td>value</td>
+<td>Set a new searching value.</td>
+</tr>
+<tr>
+<td>getName</td>
+<td>none</td>
+<td>Return the current searching type name.</td>
+</tr>
+<tr>
+<td>selectName</td>
+<td>name</td>
+<td>
+Select the current searching type name.
+<p>Code example:</p>
+<pre>$('#ss').searchbox('selectName', 'sports');
+</pre>
+</td>
+</tr>
+<tr>
+<td>destroy</td>
+<td>none</td>
+<td>Destroy this component.</td>
+</tr>
+<tr>
+<td>resize</td>
+<td>width</td>
+<td>Reset the component width.</td>
+</tr>
+</tbody></table>
+
+</div>
+</body>
+</html>

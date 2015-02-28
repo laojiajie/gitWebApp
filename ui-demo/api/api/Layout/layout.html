@@ -1,0 +1,206 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>layout</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>Layout</h3>
+<p>Override defaults with $.fn.layout.defaults.</p>
+<p>
+The layout is the container that has up to five regions: north, south, east, west and center.
+The center region panel is required but edge region panel is optional.
+Every edge region panel can be resized by dragging its border, 
+they also can be collapsed by clicking on its collapsing trigger.
+The layout can be nested, thus users can build what complex layout he wants.
+</p>
+<img src="images/layout.png">
+
+<h4>Dependencies</h4>
+<ul>
+	<li>panel</li>
+	<li>resizable</li>
+</ul>
+
+<h4>Usage Example</h4>
+<h5>Create Layout</h5>
+<p>1. Create Layout via markup.</p>
+<p>Add 'easyui-layout' class to &lt;div/&gt; markup.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"cc"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-layout"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">600px</span><span class="pun">;</span><span class="pln">height</span><span class="pun">:</span><span class="lit">400px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'north',title:'North Title',split:true"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">height</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'south',title:'South Title',split:true"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">height</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'east',title:'East',split:true"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L4"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'west',title:'West',split:true"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L5"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'center',title:'center title'"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">padding</span><span class="pun">:</span><span class="lit">5px</span><span class="pun">;</span><span class="pln">background</span><span class="pun">:#</span><span class="pln">eee</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L6"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
+<p>2. Create layout on whole page.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;body</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-layout"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'north',title:'North Title',split:true"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">height</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'south',title:'South Title',split:true"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">height</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'east',title:'East',split:true"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L4"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'west',title:'West',split:true"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L5"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'center',title:'center title'"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">padding</span><span class="pun">:</span><span class="lit">5px</span><span class="pun">;</span><span class="pln">background</span><span class="pun">:#</span><span class="pln">eee</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L6"><span class="tag">&lt;/body&gt;</span></li></ol></pre>
+<p>3. Create nested layout.</p>
+<p>Notice that the west panel of inner layout is collapsed.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;body</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-layout"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'north'"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">height</span><span class="pun">:</span><span class="lit">100px</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'center'"</span><span class="tag">&gt;</span></li><li class="L3"><span class="pln">        </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-layout"</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"fit:true"</span><span class="tag">&gt;</span></li><li class="L4"><span class="pln">            </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'west',collapsed:true"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">180px</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L5"><span class="pln">            </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'center'"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L6"><span class="pln">        </span><span class="tag">&lt;/div&gt;</span></li><li class="L7"><span class="pln">    </span><span class="tag">&lt;/div&gt;</span></li><li class="L8"><span class="tag">&lt;/body&gt;</span></li></ol></pre>
+
+<p>4. Loading content with ajax</p>
+<p>
+The layout is created based on panel. Each region panel provides built-in support for
+asynchronously loading content from URLs. 
+Using the async loading technology, users can make their layout page display more faster.
+</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;body</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-layout"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'west',href:'west_content.php'"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">180px</span><span class="atv">"</span><span class="pln"> </span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"region:'center',href:'center_content.php'"</span><span class="pln"> </span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L3"><span class="tag">&lt;/body&gt;</span></li></ol></pre>
+
+<br>
+<h5>Collpase Layout Panel</h5>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'#cc'</span><span class="pun">).</span><span class="pln">layout</span><span class="pun">();</span></li><li class="L1"><span class="com">// collapse the west panel</span></li><li class="L2"><span class="pln">$</span><span class="pun">(</span><span class="str">'#cc'</span><span class="pun">).</span><span class="pln">layout</span><span class="pun">(</span><span class="str">'collapse'</span><span class="pun">,</span><span class="str">'west'</span><span class="pun">);</span></li></ol></pre>
+
+<br>
+<h5>Add west region panel with tool buttons</h5>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'#cc'</span><span class="pun">).</span><span class="pln">layout</span><span class="pun">(</span><span class="str">'add'</span><span class="pun">,{</span></li><li class="L1"><span class="pln">    region</span><span class="pun">:</span><span class="pln"> </span><span class="str">'west'</span><span class="pun">,</span></li><li class="L2"><span class="pln">    width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">180</span><span class="pun">,</span></li><li class="L3"><span class="pln">    title</span><span class="pun">:</span><span class="pln"> </span><span class="str">'West Title'</span><span class="pun">,</span></li><li class="L4"><span class="pln">    split</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span></li><li class="L5"><span class="pln">    tools</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[{</span></li><li class="L6"><span class="pln">        iconCls</span><span class="pun">:</span><span class="str">'icon-add'</span><span class="pun">,</span></li><li class="L7"><span class="pln">        handler</span><span class="pun">:</span><span class="kwd">function</span><span class="pun">(){</span><span class="pln">alert</span><span class="pun">(</span><span class="str">'add'</span><span class="pun">)}</span></li><li class="L8"><span class="pln">    </span><span class="pun">},{</span></li><li class="L9"><span class="pln">        iconCls</span><span class="pun">:</span><span class="str">'icon-remove'</span><span class="pun">,</span></li><li class="L0"><span class="pln">        handler</span><span class="pun">:</span><span class="kwd">function</span><span class="pun">(){</span><span class="pln">alert</span><span class="pun">(</span><span class="str">'remove'</span><span class="pun">)}</span></li><li class="L1"><span class="pln">    </span><span class="pun">}]</span></li><li class="L2"><span class="pun">});</span></li></ol></pre>
+
+<h4>Layout Options</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Default</strong></th>
+</tr>
+<tr>
+<td>fit</td>
+<td>boolean</td>
+<td>
+Set to true to set the layout size fit its parent container.
+When creating layout on 'body' tag, it will be auto maximized to the full size of whole page.
+</td>
+<td>false</td>
+</tr>
+</tbody></table>
+
+<h4>Region Panel Options</h4>
+<p>
+The region panel options is defined in panel component, below is some common and added properties:
+</p>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Default</strong></th>
+</tr>
+<tr>
+<td>title</td>
+
+<td>string</td>
+<td>The layout panel title text.</td>
+<td>null</td>
+</tr>
+<tr>
+<td>region</td>
+<td>string</td>
+<td>Defines the layout panel position, the value is one of following: north, south, east, west, center.</td>
+<td></td>
+</tr>
+<tr>
+
+<td>border</td>
+<td>boolean</td>
+<td>True to show layout panel border.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>split</td>
+<td>boolean</td>
+<td>True to show a split bar which user can change the panel size.</td>
+<td>false</td>
+
+</tr>
+<tr>
+<td>iconCls</td>
+<td>string</td>
+<td>An icon CSS class to show a icon on panel header.</td>
+<td>null</td>
+</tr>
+<tr>
+<td>href</td>
+<td>string</td>
+<td>An URL to load data from remote site.</td>
+
+<td>null</td>
+</tr>
+<tr>
+<td>collapsible</td>
+<td>boolean</td>
+<td>Defines if to show collapsible button.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>minWidth</td>
+<td>number</td>
+<td>The minimum panel width.</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>minHeight</td>
+<td>number</td>
+<td>The minimum panel height.</td>
+<td>10</td>
+</tr>
+<tr>
+<td>maxWidth</td>
+<td>number</td>
+<td>The maximum panel width.</td>
+
+<td>10000</td>
+</tr>
+<tr>
+<td>maxHeight</td>
+<td>number</td>
+<td>The maximum panel height.</td>
+<td>10000</td>
+</tr>
+</tbody></table>
+
+<h4>Methods</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameter</strong></th>
+
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>resize</td>
+<td>none</td>
+<td>Set the layout size.</td>
+</tr>
+<tr>
+<td>panel</td>
+<td>region</td>
+<td>Return the specified panel, the 'region' parameter possible values:'north','south','east','west','center'.</td>
+
+</tr>
+<tr>
+<td>collapse</td>
+<td>region</td>
+<td>Collapse the specified panel, the 'region' parameter possible values:'north','south','east','west'.</td>
+</tr>
+<tr>
+<td>expand</td>
+<td>region</td>
+<td>Expand the specified panel, the 'region' parameter possible values:'north','south','east','west'.</td>
+</tr>
+<tr>
+<td>add</td>
+<td>options</td>
+<td>
+Add a specified panel, the options parameter is a config object, see tab panel properties for more details.
+</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>region</td>
+<td>Remove the specified panel, the 'region' parameter possible values:'north','south','east','west'.</td>
+</tr>
+
+</tbody></table>
+
+</div>
+</body>
+</html>

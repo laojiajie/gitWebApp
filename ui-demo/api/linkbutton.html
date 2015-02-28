@@ -1,0 +1,167 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>linkbutton</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>LinkButton</h3>
+<p>Override defaults with $.fn.linkbutton.defaults.</p>
+<p>
+The linkbutton is used to create a hyperlink button. It is a representation of a normal &lt;a&gt; tag.
+It can display both an icon and text, or only the icon or text.
+The button width can dynamic and shrink/expand to fit its text labels.
+</p>
+<img src="images/linkbutton.png">
+
+<h4>Usage Example</h4>
+<h5>Create linkbutton</h5>
+<p>
+Create a linkbutton from markup is more easily.
+</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"btn"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-linkbutton"</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"iconCls:'icon-search'"</span><span class="tag">&gt;</span><span class="pln">easyui</span><span class="tag">&lt;/a&gt;</span></li></ol></pre>
+<p>
+Create a linkbutton programmatically is also allowed.
+</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"btn"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;</span><span class="pln">easyui</span><span class="tag">&lt;/a&gt;</span></li><li class="L1"><span class="pln">$('#btn').linkbutton({</span></li><li class="L2"><span class="pln">    iconCls: 'icon-search'</span></li><li class="L3"><span class="pln">});</span></li></ol></pre>
+
+<h5>Process clicking on linkbutton.</h5>
+<p>Clicking on linkbutton will send the user to other page.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"otherpage.php"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-linkbutton"</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"iconCls:'icon-search'"</span><span class="tag">&gt;</span><span class="pln">easyui</span><span class="tag">&lt;/a&gt;</span></li></ol></pre>
+<p>The example below will alert a message.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-linkbutton"</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"iconCls:'icon-search'"</span></li><li class="L1"><span class="pln">        </span><span class="atn">onclick</span><span class="pun">=</span><span class="atv">"</span><span class="pln">javascript</span><span class="pun">:</span><span class="pln">alert</span><span class="pun">(</span><span class="str">'easyui'</span><span class="pun">)</span><span class="atv">"</span><span class="tag">&gt;</span><span class="pln">easyui</span><span class="tag">&lt;/a&gt;</span></li></ol></pre>
+<p>Bind click handler using jQuery.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"btn"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-linkbutton"</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"iconCls:'icon-search'"</span><span class="tag">&gt;</span><span class="pln">easyui</span><span class="tag">&lt;/a&gt;</span></li></ol></pre>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(){</span></li><li class="L1"><span class="pln">    $</span><span class="pun">(</span><span class="str">'#btn'</span><span class="pun">).</span><span class="pln">bind</span><span class="pun">(</span><span class="str">'click'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(){</span></li><li class="L2"><span class="pln">        alert</span><span class="pun">(</span><span class="str">'easyui'</span><span class="pun">);</span></li><li class="L3"><span class="pln">    </span><span class="pun">});</span></li><li class="L4"><span class="pun">});</span></li></ol></pre>
+
+
+<h4>Properties</h4>
+<table class="doc-table">
+<tbody><tr>
+
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Default</strong></th>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>The id attribute of this component.</td>
+<td>null</td>
+
+</tr>
+<tr>
+<td>disabled</td>
+<td>boolean</td>
+<td>True to disable the button</td>
+<td>false</td>
+</tr>
+<tr>
+<td>toggle</td>
+<td>boolean</td>
+<td>
+True to enable the user to switch its state to selected or unselected.
+This property is available since version 1.3.3.
+</td>
+<td>false</td>
+</tr>
+<tr>
+<td>selected</td>
+<td>boolean</td>
+<td>Defines if the button's state is selected. This property is available since version 1.3.3.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>group</td>
+<td>string</td>
+<td>
+The group name that indicates what buttons belong to.
+This property is available since version 1.3.3.
+</td>
+<td>null</td>
+</tr>
+<tr>
+<td>plain</td>
+<td>boolean</td>
+<td>True to show a plain effect.</td>
+
+<td>false</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>The button text.</td>
+<td>''</td>
+</tr>
+<tr>
+<td>iconCls</td>
+<td>string</td>
+
+<td>A CSS class to display a 16x16 icon on left.</td>
+<td>null</td>
+</tr>
+<tr>
+<td>iconAlign</td>
+<td>string</td>
+<td>
+Position of the button icon. Possible values are: 'left','right'.
+This property is available since version 1.3.2.
+</td>
+<td>left</td>
+</tr>
+</tbody></table>
+
+<h4>Methods</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>options</td>
+<td>none</td>
+<td>Return options property.</td>
+</tr>
+<tr>
+<td>disable</td>
+<td>none</td>
+
+<td>
+Disable the button.
+<p>Code example:</p>
+<pre>$('#btn').linkbutton('disable');
+</pre>
+</td>
+</tr>
+<tr>
+<td>enable</td>
+<td>none</td>
+<td>
+Enable the button.
+<p>Code example:</p>
+<pre>$('#btn').linkbutton('enable');
+</pre>
+</td>
+</tr>
+<tr>
+<td>select</td>
+<td>none</td>
+<td>Select the button. This method is available since version 1.3.3.</td>
+</tr>
+<tr>
+<td>unselect</td>
+<td>none</td>
+<td>Unselect the button. This method is available since version 1.3.3.</td>
+</tr>
+</tbody></table>
+
+</div>
+</body>
+</html>

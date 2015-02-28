@@ -1,0 +1,169 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>draggable</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>Draggable</h3>
+<p>Override defaults with $.fn.draggable.defaults.</p>
+
+<h4>Usage Example</h4>
+<p>Create a draggable element from markup.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"dd"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-draggable"</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"handle:'#title'"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="pln">height</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"title"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">background</span><span class="pun">:#</span><span class="pln">ccc</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;</span><span class="pln">title</span><span class="tag">&lt;/div&gt;</span></li><li class="L2"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
+<p>Create a draggable element using javascript.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"dd"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="pln">height</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"title"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">background</span><span class="pun">:#</span><span class="pln">ccc</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;</span><span class="pln">title</span><span class="tag">&lt;/div&gt;</span></li><li class="L2"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'#dd'</span><span class="pun">).</span><span class="pln">draggable</span><span class="pun">({</span></li><li class="L1"><span class="pln">    handle</span><span class="pun">:</span><span class="str">'#title'</span></li><li class="L2"><span class="pun">});</span></li></ol></pre>
+
+<h4>Properties</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+
+<th><strong>Description</strong></th>
+<th><strong>Default</strong></th>
+</tr>
+<tr>
+<td>proxy</td>
+<td>string,function</td>
+<td>
+A proxy element to be used when dragging, when set to 'clone', a clone element is used as proxy. If a function is specified, it must return a jQuery object.
+<p>The example below shows how to create a simple proxy object.</p>
+<pre>$('.dragitem').draggable({
+	proxy: function(source){
+		var p = $('&lt;div style="border:1px solid #ccc;width:80px"&gt;&lt;/div&gt;');
+		p.html($(source).html()).appendTo('body');
+		return p;
+	}
+});
+</pre>
+</td>
+<td>null</td>
+</tr>
+<tr>
+<td>revert</td>
+
+<td>boolean</td>
+<td>If set to true, the element will return to its start position when dragging stops.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>cursor</td>
+<td>string</td>
+<td>The css cursor when dragging.</td>
+<td>move</td>
+</tr>
+
+<tr>
+<td>deltaX</td>
+<td>number</td>
+<td>The dragged element position x corresponding to current cursor</td>
+<td>null</td>
+</tr>
+<tr>
+<td>deltaY</td>
+<td>number</td>
+<td>The dragged element position y corresponding to current cursor</td>
+
+<td>null</td>
+</tr>
+<tr>
+<td>handle</td>
+<td>selector</td>
+<td>The handle that start the draggable.</td>
+<td>null</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>boolean</td>
+
+<td>True to stop draggable.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>edge</td>
+<td>number</td>
+<td>The drag width in which can start draggable.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>axis</td>
+
+<td>string</td>
+<td>Defines the axis which the dragged elements moves on, available value is 'v' or 'h', when set to null will move across 'v' and 'h' direction.</td>
+<td>null</td>
+</tr>
+</tbody></table>
+
+<h4>Events</h4>
+<table class="doc-table">
+
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameters</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>onBeforeDrag</td>
+<td>e</td>
+<td>Fires before dragging, return false to cancel this dragging.</td>
+</tr>
+<tr>
+
+<td>onStartDrag</td>
+<td>e</td>
+<td>Fires when the target object start dragging.</td>
+</tr>
+<tr>
+<td>onDrag</td>
+<td>e</td>
+<td>Fires during dragging. Return false will not do dragging actually.</td>
+</tr>
+<tr>
+<td>onStopDrag</td>
+
+<td>e</td>
+<td>Fires when the dragging stops.</td>
+</tr>
+</tbody></table>
+
+<h4>Methods</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>options</td>
+<td>none</td>
+<td>Return the options property.</td>
+</tr>
+<tr>
+<td>proxy</td>
+<td>none</td>
+
+<td>Return the drag proxy if the proxy property is setted.</td>
+</tr>
+<tr>
+<td>enable</td>
+<td>none</td>
+<td>Enable the drag action.</td>
+</tr>
+<tr>
+<td>disable</td>
+<td>none</td>
+<td>Disable the drag action.</td>
+
+</tr>
+</tbody></table>
+
+</div>
+</body>
+</html>

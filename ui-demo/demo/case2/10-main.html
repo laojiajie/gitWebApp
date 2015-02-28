@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>处罚案件-填报</title>
+	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<script type="text/javascript" src="../../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../../resource/css/form.css">
+	<script type="text/javascript"  src="../../resource/js/form.js"></script>
+</head>
+<body class="easyui-layout">
+		<div data-options="region:'west',split:true" title="" style="width:200px;">
+			<div class="demo-info"><INPUT TYPE="radio" NAME="模板">模板<INPUT TYPE="radio" checked NAME="全打">全打<INPUT TYPE="radio" NAME="套打">套打</div>
+			<div class="easyui-layout" data-options="fit:true">
+				<div data-options="region:'north',split:true,border:false"  title="文书区" style="height:200px">
+				</div>
+				<div data-options="region:'center',border:false"  title="附件区"></div>
+				<div data-options="region:'south',split:true,border:false"  title="位置简图" style="height:200px"></div>
+			</div>
+		</div>
+		<div data-options="region:'center',title:'',iconCls:'icon-ok'">
+			<div class="easyui-tabs" data-options="fit:true,border:false,plain:true">
+				<div title="工作区" data-options="" style="padding:10px">
+	
+					<div class="easyui-layout" data-options="fit:true">
+						<div data-options="region:'center',split:false,border:false">
+				   		<table cellpadding="0" cellspacing="0" border="0"  class="LCicon_tbl" >
+							<tr>
+								<td>
+									<div class='LCicon_div'>
+										<div class="LCtitle">填写登记信息</div>
+										<div class="LCion"><input type="button" value="查看" class="LCbtn" id="btn_1" onclick=" $('#win_1').window('open')"></div>
+										<div class="LCtxt"><span class="mark">张三</span>于2014-10-11已经处理</div>
+									</div>
+								</td>
+									<td>
+									<div class='LCicon_div'>
+										<div class="LCtitle">附件上传</div>
+										<div class="LCion"><input type="button" value="查看" class="LCbtn" id="btn_2"></div>
+										<div class="LCtxt"><span class="mark">张三</span>于2014-10-11已经处理</div>
+									</div>
+								</td>
+								<td>
+									<div class='LCicon_div'>
+										<div class="LCtitle">审批</div>
+										<div class="LCion"><input type="button" value="选项" class="LCbtn LCdrop" id="btn_3"></div>
+										<div class="LCtxt">
+											点击查看更多选项
+											</div>
+											<ul class="LC2_ul">
+												<li><a href="javascript:" onclick=" $('#win_30').window('open')">受理机构意见</a></li>
+												<li><a href="javascript:" onclick=" $('#win_31').window('open')">局长意见</a></li>
+											</ul>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class='LCicon_div'>
+										<div class="LCtitle">举报信息</div>
+										<div class="LCion"><input type="button" value="查看" class="LCbtn" id="btn_4" onclick=" $('#win_4').window('open')"></div>
+										<div class="LCtxt">张三于2014-10-11已经处理</div>
+									</div>
+								</td>	
+								<td>
+								</td>
+								<td>
+								</td>
+							</tr>
+							</table>
+						
+						
+						
+						
+						</div>
+						<div data-options="region:'south',border:false"  style="height:30px">
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">提交</a>
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-sum'">暂存</a>
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-tip'">转交</a>
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">附件管理</a>							
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'">送达回证</a>							
+						</div>
+					</div>
+				</div>
+				<div title="案件基本信息" data-options="" style="padding:10px">
+               <table>
+	    		<tr>
+	    			<td>案件编号：</td>
+	    			<td></td>
+	    		</tr>
+	    		<tr>
+	    			<td>案由:</td>
+	    			<td> </td>
+	    		</tr>
+	    		<tr>
+	    			<td>案发路线:</td>
+	    			<td> </td>
+	    		</tr>
+	    		<tr>
+	    			<td>案发时间:</td>
+	    			<td> </td>
+	    		</tr>
+	    		<tr>
+	    			<td>当事人:</td>
+	    			<td> </td>
+	    		</tr>
+	    		<tr>
+	    			<td>事故原因:</td>
+	    			<td> </td>
+	    		</tr>
+			  </table>
+				</div>
+				<div title="办事痕迹" data-options="href:''" style="padding:10px">
+					<table class="easyui-datagrid"
+							data-options="method:'get',singleSelect:true,fit:true,fitColumns:true">
+						<thead>
+							<tr>
+								<th data-options="field:'itemid'" width="80">任务</th>
+								<th data-options="field:'productid'" width="100">处理人</th>
+								<th data-options="field:'listprice',align:'right'" width="80">完成时间</th>
+								<th data-options="field:'unitcost',align:'right'" width="80">状态</th>
+								<th data-options="field:'unitcost',align:'right'" width="80">意见或回退原因 </th>
+							</tr>
+						</thead>
+					</table>				
+				</div>
+				<div title="流程图" style="padding:5px">
+
+				</div>
+			</div>
+		</div>
+
+  <!-- begin 信息填报窗口部分    -->
+	<div id="win_1" class="easyui-dialog" title="基本信息" style="width:900px;height:470px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+            <input  type="hidden" name="ORGID"  value="NewID" >        
+			<table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+	    	<tr ><td width="120"></td><td width="160"></td><td width="120"></td><td width="160"></td><td width="120"></td><td width="160"></td></tr>
+			<tr>
+	    		<td class="label">案件编号</td>
+	    		<td align="left" colspan="3">
+	    			XXXX赔[ 2014 ]<input class="easyui-validatebox" type="text" style="width:50px;">号&nbsp;&nbsp;&nbsp;&nbsp;案件占用<input type="radio" name="">&nbsp;&nbsp;&nbsp;&nbsp;上一年|下一年</td>
+				<td class="label">案件来源</td>
+				<td><input class="easyui-combotree" name="" style="width:150px;" ></td>
+	    	</tr>
+			<tr>
+	    		<td class="label">案由</td>
+	    		<td colspan="5"><select class="easyui-combobox" style="width:710px;"></select></td>
+	    	</tr>
+			<tr>
+	    		<td class="label">立案依据</td>
+	    		<td colspan="5"><select class="easyui-combobox" style="width:710px;"></select></td>
+	    	</tr>
+			<tr>
+	    		<td class="label">案发时间</td>
+	    		<td><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				<td class="label">案发路线</td>
+	    		<td colspan="3"><input class="easyui-combotree" name=""  style="width:430px;"></td>
+	    	</tr>
+			<tr>
+	    		<td class="label">起止桩号</td>
+	    		<td>K<input class="easyui-validatebox" type="text" style="width:20px;">+<input class="easyui-validatebox" type="text" style="width:20px;">至K<input class="easyui-validatebox" type="text" style="width:20px;">+<input class="easyui-validatebox" type="text" style="width:20px;"></td>
+	    		<td class="label">方向</td>
+	    		<td><select class="easyui-combobox" style="width:150px"></td>
+	    		<td class="label">位置</td>
+				<td><select class="easyui-combobox" style="width:150px"></td>
+	    	</tr>
+			<tr>
+	    		<td class="label">事故原因</td>
+	    		<td><select class="easyui-combobox" style="width:150px"></td>
+	    		<td class="label">事故类型</td>
+	    		<td><select class="easyui-combobox" style="width:150px"></td>
+	    		<td class="label">事故性质</td>
+				<td><select class="easyui-combobox" style="width:150px"></td>
+	    	</tr>
+			<tr>
+	    		<td class="label">损坏程度</td>
+	    		<td><select class="easyui-combobox" style="width:150px"></td>
+	    		<td class="label">天气</td>
+	    		<td><select class="easyui-combobox" style="width:430px"></td>
+	    	</tr>
+			<tr>
+	    		<td class="label">轻伤人数</td>
+	    		<td><select class="easyui-combobox" style="width:150px"></td>
+	    		<td class="label">重伤人数</td>
+	    		<td><select class="easyui-combobox" style="width:150px"></td>
+	    		<td class="label">死亡人数</td>
+				<td><select class="easyui-combobox" style="width:150px"></td>
+	    	</tr>
+			<tr>
+	    		<td class="label">勘查人1</td>
+	    		<td><select class="easyui-combobox" style="width:150px"></td>
+	    		<td class="label">勘查人2</td>
+	    		<td><select class="easyui-combobox" style="width:150px"></td>
+	    		<td></td>
+				<td></td>
+	    	</tr>
+			<tr>
+	    		
+	    		<td class="label">名义上立案机关</td>
+	    		<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+	    		<td class="label">记录人</td>
+				<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				<td class="label">登记日期</td>
+	    		<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+	    	</tr>
+	    	</table>
+
+			
+			<div class="easyui-tabs" data-options="border:false,plain:true" style="height:390px;">
+				<div title="案件路产损坏清单" data-options="" style="padding:5px 0">
+					<table class="easyui-datagrid" style="width:840px;height:350px; position:relative"
+					data-options="
+						url: 'datagrid_data2.json',
+						method: 'get',
+						fitColumns: true,
+						singleSelect: true,
+						rownumbers: true,
+						showFooter: true,
+						toolbar:'#tb10'
+					">
+						<thead>
+							<tr>
+								<th data-options="field:'itemid',width:120">路产名称 </th>
+								<th data-options="field:'productid',width:120">规格</th>
+								<th data-options="field:'listprice',width:50,align:'right'">数量</th>
+								<th data-options="field:'unitcost',width:50,align:'right'">单位</th>
+								<th data-options="field:'attr1',width:100">单价(元)</th>
+								<th data-options="field:'all',width:100,align:'center'">总价(元) </th>
+								<th data-options="field:'status',width:180,align:'center'">备注</th>
+							</tr>
+						</thead>
+					</table>
+					<div id="tb10" style="padding:5px;height:auto">
+						<div style="margin-bottom:5px">
+							<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>
+							<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+						</div>
+					</div>
+				</div><!--end [案件路产损坏清单]-->
+
+				<div title="当事人信息" data-options="" >
+					<div style="float:left; padding:5px">
+					<table class="easyui-datagrid" style="width:150px;height:320px; position:relative"
+					data-options="
+						url: 'datagrid_data2.json',
+						method: 'get',
+						fitColumns: true,
+						singleSelect: true,
+						rownumbers: true,
+						showFooter: true,
+						toolbar:'#tb11'
+					">
+						<thead>
+							<tr>
+								<th data-options="field:'itemid',width:100">当事人 </th>
+								<th data-options="field:'productid',width:50">性质</th>
+							</tr>
+						</thead>
+					</table>
+					<div id="tb11" style="height:auto">
+						<div >
+							<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>
+							<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+						</div>
+					</div><!--end [tb11]-->
+					</div>
+					<div style="float:left; width:630px;">
+						<table cellpadding="0" cellspacing="0" border="1" class="formdialog_tbl" style="width:630px; margin-bottom:10px">
+						<tr ><td width="30"></td><td width="80"></td><td width="120"></td><td width="80"></td><td width="120"></td><td width="80"></td><td width="120"></td></tr>
+						<tr>
+							<td rowspan="3" class="label2">当事人信息</td>
+							<td class="label" >当事人性质</td>
+							<td>个人<input type="radio" name=""> 单位<input type="radio" name=""></td>
+							<td class="label" >当事人姓名</td>
+							<td><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+							<td class="label" >性别</td>
+							<td>男 <input type="radio" name="">  女<input type="radio" name=""></td>
+						</tr>
+						<tr>
+							<td class="label" >年龄</td>
+							<td ><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+							<td class="label" >电话</td>
+							<td ><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+							<td class="label" >住址</td>
+							<td ><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+						</tr>
+						<tr>
+							<td class="label" >邮编</td>
+							<td ><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+							<td class="label" >证件号</td>
+							<td ><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+							<td class="label" >职业</td>
+							<td ><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+						</tr>
+						<tr>
+							<td rowspan="4" class="label2">驾驶员或当事人代表</td>
+							<td colspan="2" style="text-align:center;"><a href="javascript:" class="easyui-linkbutton" iconCls="icon-add" plain="true">复制当事人信息</a></td>
+							<td class="label" >姓名</td>
+							<td><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+							<td class="label" >性别</td>
+							<td>男 <input type="radio" name="">  女<input type="radio" name=""></td>
+						</tr>
+						<tr>
+							<td class="label" >年龄</td>
+							<td ><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+							<td class="label" >电话</td>
+							<td ><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+							<td class="label" >驾驶证号</td>
+							<td ><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+						</tr>
+						<tr>
+							<td class="label" >身份证号</td>
+							<td ><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+							<td class="label" >住址</td>
+							<td colspan="3"><input class="easyui-validatebox" type="text" style="width:300px;"></td>
+						</tr>
+						<tr>
+							<td class="label" >与案件关系</td>
+							<td ><select class="easyui-combobox"  style="width:100px;"></select></td>
+							<td class="label" >单位及职务</td>
+							<td colspan="3"><select class="easyui-combobox"  style="width:300px;"></select></td>
+						</tr>
+						<tr>
+							<td class="label2" rowspan="2">车辆信息</td>
+							<td class="label" >车辆号牌</td>
+							<td ><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+							<td class="label" >厂牌型号</td>
+							<td colspan="3"><select class="easyui-combobox"  style="width:300px;"></select></td>
+						</tr>
+						<tr>
+							<td class="label" >挂车号码</td>
+							<td ><input class="easyui-validatebox" type="text" style="width:100px;"></td>
+							<td class="label" >车辆所有地</td>
+							<td colspan="3"><input class="easyui-validatebox" type="text" style="width:300px;"></td>
+						</tr>
+						<tr>
+							<td colspan="7" style="text-align:center; background:#eee;"><a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_1">保存</a> <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reset" plain="true" id="btnWin_1">重置</a></td>
+						</tr>
+						</table>
+					</div>
+				</div><!--end [当事人信息]-->
+			</div><!--end [easyui-tabs]-->
+	    </form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_1">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_1').window('close');">关闭</a>
+	</div>		
+	<!-- end  XXXX窗口部分  -->
+
+<!-- begin 受理机构意见   -->
+	<div id="win_30" class="easyui-dialog" title="受理机构意见" style="width:900px;height:440px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+			<table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+				<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr><td colspan="4"><h2 >基本信息</h2></td></tr>
+				<tr>
+					<td class="label">案号</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">案件来源</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>
+				<tr>
+					<td class="label">案由</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">当事人</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">案发时间</td>
+					<td><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+				<tr>
+					<td class="label">案发路线</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">位置</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>
+				<tr>
+					<td class="label">起止桩号</td>
+					<td colspan="3">K<input class="easyui-validatebox" type="text" style="width:20px;">+<input class="easyui-validatebox" type="text" style="width:20px;">至K<input class="easyui-validatebox" type="text" style="width:20px;">+<input class="easyui-validatebox" type="text" style="width:20px;"></td>
+				</tr>
+				<tr>
+					<td class="label">损坏程度</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">事故原因</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">勘查人1</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">勘查人2</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>
+				<tr><td colspan="4"><h2 >受理机构意见1</h2></td></tr>
+					<tr>
+						<td class="label" >意见</td>
+						<td colspan="3"><textarea name="" style="width:570px; height:60px;"></textarea>
+						</td>
+					</tr>
+					<tr>
+					<td class="label" >负责人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label" >日期</td>
+					<td><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+				<tr><td colspan="4"><h2 >受理机构意见2</h2></td></tr>
+					<tr>
+						<td class="label" >意见</td>
+						<td colspan="3"><textarea name="" style="width:570px; height:60px;"></textarea>
+						<select class="easyui-combobox" style="width:570px;"></select>
+						</td>
+					</tr>
+					<tr>
+					<td class="label" >负责人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label" >日期</td>
+					<td><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_30">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_30').window('close');">关闭</a>
+	</div>	
+	<!-- end 受理机构意见  -->
+
+	<!-- begin 局长意见   -->
+	<div id="win_31" class="easyui-dialog" title="局长意见" style="width:900px;height:440px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+			<table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+				<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr><td colspan="4"><h2 >基本信息</h2></td></tr>
+				<tr>
+					<td class="label">案号</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">案件来源</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>
+				<tr>
+					<td class="label">案由</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+				<tr>
+					<td class="label">当事人</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">案发时间</td>
+					<td><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+				<tr>
+					<td class="label">案发路线</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">位置</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>
+				<tr>
+					<td class="label">起止桩号</td>
+					<td colspan="3">K<input class="easyui-validatebox" type="text" style="width:20px;">+<input class="easyui-validatebox" type="text" style="width:20px;">至K<input class="easyui-validatebox" type="text" style="width:20px;">+<input class="easyui-validatebox" type="text" style="width:20px;"></td>
+				</tr>
+				<tr>
+					<td class="label">损坏程度</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:60px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">事故原因</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:60px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">勘查人1</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">勘查人2</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>
+				<tr><td colspan="4"><h2 >受理机构意见</h2></td></tr>
+				<tr>
+					<td class="label" >意见</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:60px;"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="label" >负责人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label" >日期</td>
+					<td><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+				<tr><td colspan="4"><h2 >局长意见</h2></td></tr>
+				<tr>
+					<td class="label" >立案</td>
+					<td colspan="3">予以立案<input type="radio" name="">  不予立案<input type="radio" name=""></td>
+				</tr>
+				<tr>
+					<td class="label" >意见</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:60px;"></textarea>
+					<select class="easyui-combobox" style="width:570px;"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="label" >负责人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label" >日期</td>
+					<td><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_31">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_31').window('close');">关闭</a>
+	</div>	
+	<!-- end 局长意见  -->
+
+	<!-- begin 1-2-举报记录   -->
+	<div id="win_4" class="easyui-dialog" title="举报记录" style="width:900px;height:440px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+			<table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+				<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr>
+					<td class="label">举报类别</td>
+					<td><select class="easyui-combobox" style="width:150px"></td>
+					<td class="label">举报时间</td>
+					<td><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+				<tr>
+					<td class="label">举报人</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">性别</td>
+					<td>男<input type="radio" name=""> 女<input type="radio" name=""></td>
+				</tr>
+				<tr>
+					<td class="label">年龄</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">住所或单位</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>
+				<tr>
+					<td class="label">联系电话</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">身份证号</td>
+					<td><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+				</tr>
+				<tr>
+					<td class="label">举报内容</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">备注</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">记录人</td>
+					<td><select class="easyui-combobox" style="width:150px"></td>
+					<td class="label">记录时间</td>
+					<td><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_4">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_4').window('close');">关闭</a>
+	</div>	
+	<!-- end 1-2-举报记录  -->
+<SCRIPT LANGUAGE="JavaScript">
+
+</SCRIPT>
+
+</body>
+</html>

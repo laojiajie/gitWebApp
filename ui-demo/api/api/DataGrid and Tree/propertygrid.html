@@ -1,0 +1,116 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>propertygrid</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>PropertyGrid</h3>
+<p>Extend from $.fn.datagrid.defaults. Override defaults with $.fn.propertygrid.defaults.</p>
+<p>
+The propertygrid provides users an interface for browsing and editing the properties of an object.
+The property grid is an inline editing datagrid. It is fairly easy to use.
+Users can easily create a hierarchical list of editable properties and represent any data type of item.
+The property grid comes with a built-in sorting and grouping features.
+</p>
+<img src="images/propertygrid.png">
+
+<h4>Dependencies</h4>
+<ul>
+	<li>datagrid</li>
+</ul>
+
+<h4>Usage</h4>
+<p>
+Create a propertygrid in markup.
+Notice that the columns have been built-in and don't need to declare them again.
+</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;table</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"pg"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-propertygrid"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">300px</span><span class="atv">"</span></li><li class="L1"><span class="pln">        </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"url:'get_data.php',showGroup:true,scrollbarSize:0"</span><span class="tag">&gt;&lt;/table&gt;</span></li></ol></pre>
+
+<p>Create a propertygrid using javascript.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;table</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"pg"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">300px</span><span class="atv">"</span><span class="tag">&gt;&lt;/table&gt;</span></li></ol></pre>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'#pg'</span><span class="pun">).</span><span class="pln">propertygrid</span><span class="pun">({</span></li><li class="L1"><span class="pln">    url</span><span class="pun">:</span><span class="pln"> </span><span class="str">'get_data.php'</span><span class="pun">,</span></li><li class="L2"><span class="pln">    showGroup</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span></li><li class="L3"><span class="pln">    scrollbarSize</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span></li><li class="L4"><span class="pun">});</span></li></ol></pre>
+
+<p>Append a new row to propertygrid.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="kwd">var</span><span class="pln"> row </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span></li><li class="L1"><span class="pln">  name</span><span class="pun">:</span><span class="str">'AddName'</span><span class="pun">,</span></li><li class="L2"><span class="pln">  value</span><span class="pun">:</span><span class="str">''</span><span class="pun">,</span></li><li class="L3"><span class="pln">  </span><span class="kwd">group</span><span class="pun">:</span><span class="str">'Marketing Settings'</span><span class="pun">,</span></li><li class="L4"><span class="pln">  editor</span><span class="pun">:</span><span class="str">'text'</span></li><li class="L5"><span class="pun">};</span></li><li class="L6"><span class="pln">$</span><span class="pun">(</span><span class="str">'#pg'</span><span class="pun">).</span><span class="pln">propertygrid</span><span class="pun">(</span><span class="str">'appendRow'</span><span class="pun">,</span><span class="pln">row</span><span class="pun">);</span></li></ol></pre>
+
+<h4>Row Data</h4>
+<p>
+The propertygrid extend from datagrid. 
+It's row data format is same as datagrid.
+As a property row, the following fields are required:<br>
+name: the field name.<br>
+value: the field value to be edited.<br>
+group: the group field value.<br>
+editor: the editor while editing property value.
+</p>
+<p>Row data example:</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pun">{</span><span class="str">"total"</span><span class="pun">:</span><span class="lit">4</span><span class="pun">,</span><span class="str">"rows"</span><span class="pun">:[</span></li><li class="L1"><span class="pln">    </span><span class="pun">{</span><span class="str">"name"</span><span class="pun">:</span><span class="str">"Name"</span><span class="pun">,</span><span class="str">"value"</span><span class="pun">:</span><span class="str">"Bill Smith"</span><span class="pun">,</span><span class="str">"group"</span><span class="pun">:</span><span class="str">"ID Settings"</span><span class="pun">,</span><span class="str">"editor"</span><span class="pun">:</span><span class="str">"text"</span><span class="pun">},</span></li><li class="L2"><span class="pln">    </span><span class="pun">{</span><span class="str">"name"</span><span class="pun">:</span><span class="str">"Address"</span><span class="pun">,</span><span class="str">"value"</span><span class="pun">:</span><span class="str">""</span><span class="pun">,</span><span class="str">"group"</span><span class="pun">:</span><span class="str">"ID Settings"</span><span class="pun">,</span><span class="str">"editor"</span><span class="pun">:</span><span class="str">"text"</span><span class="pun">},</span></li><li class="L3"><span class="pln">    </span><span class="pun">{</span><span class="str">"name"</span><span class="pun">:</span><span class="str">"SSN"</span><span class="pun">,</span><span class="str">"value"</span><span class="pun">:</span><span class="str">"123-456-7890"</span><span class="pun">,</span><span class="str">"group"</span><span class="pun">:</span><span class="str">"ID Settings"</span><span class="pun">,</span><span class="str">"editor"</span><span class="pun">:</span><span class="str">"text"</span><span class="pun">},</span></li><li class="L4"><span class="pln">    </span><span class="pun">{</span><span class="str">"name"</span><span class="pun">:</span><span class="str">"Email"</span><span class="pun">,</span><span class="str">"value"</span><span class="pun">:</span><span class="str">"bill@gmail.com"</span><span class="pun">,</span><span class="str">"group"</span><span class="pun">:</span><span class="str">"Marketing Settings"</span><span class="pun">,</span><span class="str">"editor"</span><span class="pun">:{</span></li><li class="L5"><span class="pln">        </span><span class="str">"type"</span><span class="pun">:</span><span class="str">"validatebox"</span><span class="pun">,</span></li><li class="L6"><span class="pln">        </span><span class="str">"options"</span><span class="pun">:{</span></li><li class="L7"><span class="pln">            </span><span class="str">"validType"</span><span class="pun">:</span><span class="str">"email"</span></li><li class="L8"><span class="pln">        </span><span class="pun">}</span></li><li class="L9"><span class="pln">    </span><span class="pun">}}</span></li><li class="L0"><span class="pun">]}</span></li></ol></pre>
+
+<h4>Properties</h4>
+<p>The properties extend from datagrid, below is the added properties for propertygrid.</p>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Default</strong></th>
+</tr>
+<tr>
+<td>showGroup</td>
+
+<td>boolean</td>
+<td>Defines if to show property group.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>groupField</td>
+<td>string</td>
+<td>Defines the group field name.</td>
+<td>group</td>
+</tr>
+
+<tr>
+<td>groupFormatter</td>
+<td>function(group,rows)</td>
+<td>
+Defines how to format the group value. This function takes following parameters:<br>
+group: the group field value.<br>
+rows: the rows belong to its group.
+</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h4>Methods</h4>
+<p>The methods extend from datagrid, below is the added methods for propertygrid.</p>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>expandGroup</td>
+<td>groupIndex</td>
+<td>
+Expand specified group.
+If the 'groupIndex' parameter is not assigned, expand all group.
+</td>
+</tr>
+<tr>
+<td>collapseGroup</td>
+<td>groupIndex</td>
+<td>
+Collapse specified group.
+If the 'groupIndex' parameter is not assigned, collapse all group.
+</td>
+</tr>
+</tbody></table>
+</div>
+</body>
+</html>

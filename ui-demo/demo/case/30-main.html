@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>赔补偿案件-告知权力</title>
+	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<script type="text/javascript" src="../../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="../../resource/css/form.css">
+	<script type="text/javascript"  src="../../resource/js/form.js"></script>
+</head>
+<body class="easyui-layout">
+		<div data-options="region:'west',split:true" title="" style="width:200px;">
+			<div class="demo-info"><INPUT TYPE="radio" NAME="模板">模板<INPUT TYPE="radio" checked NAME="全打">全打<INPUT TYPE="radio" NAME="套打">套打</div>
+			<div class="easyui-layout" data-options="fit:true">
+				<div data-options="region:'north',split:true,border:false"  title="文书区" style="height:200px">
+				</div>
+				<div data-options="region:'center',border:false"  title="附件区"></div>
+				<div data-options="region:'south',split:true,border:false"  title="位置简图" style="height:200px"></div>
+			</div>
+		</div>
+		<div data-options="region:'center',title:'',iconCls:'icon-ok'">
+			<div class="easyui-tabs" data-options="fit:true,border:false,plain:true">
+				<div title="工作区" data-options="" style="padding:10px">
+	
+					<div class="easyui-layout" data-options="fit:true">
+						<div data-options="region:'center',split:false,border:false">
+				   		<table cellpadding="0" cellspacing="0" border="0"  class="LCicon_tbl" >
+							<tr>
+								<td>
+									<div class='LCicon_div'>
+										<div class="LCtitle">证件材料复核</div>
+										<div class="LCion"><input type="button" value="查看" class="LCbtn" id="btn_1" onclick=" $('#win_1').window('open')"></div>
+										<div class="LCtxt"><span class="mark">张三</span>于2014-10-11已经处理</div>
+									</div>
+								</td>
+									<td>
+									<div class='LCicon_div'>
+										<div class="LCtitle">赔补偿通知书</div>
+										<div class="LCion"><input type="button" value="查看" class="LCbtn" id="btn_2" onclick=" $('#win_2').window('open')"></div>
+										<div class="LCtxt"><span class="mark">张三</span>于2014-10-11已经处理</div>
+									</div>
+								</td>
+
+									<td>
+									<div class='LCicon_div'>
+										<div class="LCtitle">告知权利</div>
+										<div class="LCion"><input type="button" value="查看" class="LCbtn" id="btn_3" onclick=" $('#win_3').window('open')"></div>
+										<div class="LCtxt"><span class="mark">张三</span>于2014-10-11已经处理</div>
+									</div>
+									</div>
+								</td>
+							</tr>
+							</table>
+						
+						
+						
+						
+						</div>
+						<div data-options="region:'south',border:false"  style="height:30px">
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">提交</a>
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-sum'">暂存</a>
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-tip'">转交</a>
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">附件管理</a>							
+				   		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'">送达回证</a>							
+						</div>
+					</div>
+				</div>
+				<div title="案件基本信息" data-options="" style="padding:10px">
+               <table>
+	    		<tr>
+	    			<td>案件编号：</td>
+	    			<td></td>
+	    		</tr>
+	    		<tr>
+	    			<td>案由:</td>
+	    			<td> </td>
+	    		</tr>
+	    		<tr>
+	    			<td>案发路线:</td>
+	    			<td> </td>
+	    		</tr>
+	    		<tr>
+	    			<td>案发时间:</td>
+	    			<td> </td>
+	    		</tr>
+	    		<tr>
+	    			<td>当事人:</td>
+	    			<td> </td>
+	    		</tr>
+	    		<tr>
+	    			<td>事故原因:</td>
+	    			<td> </td>
+	    		</tr>
+			  </table>
+				</div>
+				<div title="办事痕迹" data-options="href:''" style="padding:10px">
+					<table class="easyui-datagrid"
+							data-options="method:'get',singleSelect:true,fit:true,fitColumns:true">
+						<thead>
+							<tr>
+								<th data-options="field:'itemid'" width="80">任务</th>
+								<th data-options="field:'productid'" width="100">处理人</th>
+								<th data-options="field:'listprice',align:'right'" width="80">完成时间</th>
+								<th data-options="field:'unitcost',align:'right'" width="80">状态</th>
+								<th data-options="field:'unitcost',align:'right'" width="80">意见或回退原因 </th>
+							</tr>
+						</thead>
+					</table>				
+				</div>
+				<div title="流程图" style="padding:5px">
+
+				</div>
+			</div>
+		</div>
+
+  <!-- begin 证件材料复核    -->
+	<div id="win_1" class="easyui-dialog" title="证件材料复核" style="width:900px;height:340px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+            <table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+				<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr>
+					<td class="label">所附证据材料</td>
+					<td colspan="3">
+						<input type="checkbox" name="">现场勘验笔录<br>
+						<input type="checkbox" name="">现场勘验示意图<br>
+						<input type="checkbox" name="">询问笔录<br>
+						<input type="checkbox" name="">现场照片
+					</td>
+				</tr>
+				<tr>
+					<td class="label">证据材料符合意见</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">备注</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+			</table>
+	    </form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_1">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_1').window('close');">关闭</a>
+	</div>		
+	<!-- end  证件材料复核  -->
+
+
+    <!-- begin 赔补偿通知书    -->
+	<div id="win_2" class="easyui-dialog" title="赔补偿通知书" style="width:900px;height:370px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+            <input  type="hidden" name="ORGID"  value="NewID" >   
+			<table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+				<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr>
+					<td class="label">调查单位</td>
+					<td colspan="3"><select class="easyui-combobox"  style="width:570px;"></select></td>
+				</tr>
+				<tr>
+					<td class="label">当事人行为</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">所附证据</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">赔补偿内容</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:40px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">赔补偿金额(元)</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">下达日期</td>
+					<td ><input class="easyui-datebox" style="width:150px"></td>
+				</tr>
+				<tr>
+					<td class="label">交款地点</td>
+					<td colspan="3"><input class="easyui-validatebox" type="text" style="width:570px;"></td>
+				</tr>
+			</table>
+	    </form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_2">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_2').window('close');">关闭</a>
+	</div>		
+	<!-- end  赔补偿通知书  -->
+
+	<!-- begin 告知权利   -->
+	<div id="win_3" class="easyui-dialog" title="告知权利" style="width:900px;height:340px;padding:5px"
+			data-options=" iconCls: 'icon-save',closed: true, buttons: '#orgBtns'	">
+        <form id="orgForm" method="post">
+			<table cellpadding="0" cellspacing="0" border="0" class="formdialog_tbl">
+	    		<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td width="260"></td></tr>
+				<tr>
+					<td class="label">当事人是否提出异议</td>
+					<td colspan="3">
+						是<input type="radio" name=""> 否<input type="radio" name=""><br>
+						<input type="checkbox" name="□">当事人申请复核  <br><input type="checkbox" name="□">当事人向法院起诉							
+					</td>
+				</tr>
+				<tr>
+					<td class="label">申请复核或向法院起诉内容</td>
+					<td colspan="3"><textarea name="" style="width:570px; height:70px;"></textarea></td>
+				</tr>
+				<tr>
+					<td class="label">办理人</td>
+					<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+					<td class="label">日期</td>
+					<td ><input class="easyui-datebox" style="width:150px"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="orgBtns">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="btnWin_3">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="$('#win_3').window('close');">关闭</a>
+	</div>	
+	<!-- end 告知权利  -->
+
+	
+<SCRIPT LANGUAGE="JavaScript">
+	   
+
+
+</SCRIPT>
+
+</body>
+</html>

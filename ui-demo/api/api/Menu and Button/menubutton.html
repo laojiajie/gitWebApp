@@ -1,0 +1,104 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>menubutton</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>MenuButton</h3>
+<p>Extend from $.fn.linkbutton.defaults. Override defaults with $.fn.menubutton.defaults.</p>
+<p>
+The menubutton is the part of drop-down menu. It is associated with a linkbutton and menu.
+The linkbutton is displayed while the menu is hidden.
+When users click or move the mouse over the linkbutton, the menu will show to allow to click on it.
+</p>
+<img src="images/menubutton.png">
+
+<h4>Dependencies</h4>
+<ul>
+	<li>menu</li>
+	<li>linkbutton</li>
+</ul>
+
+<h4>Usage</h4>
+<p>
+Usually the menubutton is created declaratively from markup.
+</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"javascript:void(0)"</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"mb"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-menubutton"</span><span class="pln"> </span></li><li class="L1"><span class="pln">        </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"menu:'#mm',iconCls:'icon-edit'"</span><span class="tag">&gt;</span><span class="pln">Edit</span><span class="tag">&lt;/a&gt;</span></li><li class="L2"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"mm"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">150px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"iconCls:'icon-undo'"</span><span class="tag">&gt;</span><span class="pln">Undo</span><span class="tag">&lt;/div&gt;</span></li><li class="L4"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"iconCls:'icon-redo'"</span><span class="tag">&gt;</span><span class="pln">Redo</span><span class="tag">&lt;/div&gt;</span></li><li class="L5"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"menu-sep"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L6"><span class="pln">    </span><span class="tag">&lt;div&gt;</span><span class="pln">Cut</span><span class="tag">&lt;/div&gt;</span></li><li class="L7"><span class="pln">    </span><span class="tag">&lt;div&gt;</span><span class="pln">Copy</span><span class="tag">&lt;/div&gt;</span></li><li class="L8"><span class="pln">    </span><span class="tag">&lt;div&gt;</span><span class="pln">Paste</span><span class="tag">&lt;/div&gt;</span></li><li class="L9"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"menu-sep"</span><span class="tag">&gt;&lt;/div&gt;</span></li><li class="L0"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"iconCls:'icon-remove'"</span><span class="tag">&gt;</span><span class="pln">Delete</span><span class="tag">&lt;/div&gt;</span></li><li class="L1"><span class="pln">    </span><span class="tag">&lt;div&gt;</span><span class="pln">Select All</span><span class="tag">&lt;/div&gt;</span></li><li class="L2"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
+<p>Create menubutton using javascript.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"javascript:void(0)"</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"mb"</span><span class="tag">&gt;</span><span class="pln">Edit</span><span class="tag">&lt;/a&gt;</span></li><li class="L1"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"mm"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">150px</span><span class="atv">"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">...</span></li><li class="L3"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'#mb'</span><span class="pun">).</span><span class="pln">menubutton</span><span class="pun">({</span></li><li class="L1"><span class="pln">    iconCls</span><span class="pun">:</span><span class="pln"> </span><span class="str">'icon-edit'</span><span class="pun">,</span></li><li class="L2"><span class="pln">    menu</span><span class="pun">:</span><span class="pln"> </span><span class="str">'#mm'</span></li><li class="L3"><span class="pun">});</span></li></ol></pre>
+
+<h4>Properties</h4>
+<p>The properties extend from linkbutton, below is the added properties for menubutton.</p>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Default</strong></th>
+</tr>
+<tr>
+<td>plain</td>
+<td>boolean</td>
+<td>True to show plain effect.</td>
+<td>true</td>
+</tr>
+
+<tr>
+<td>menu</td>
+<td>string</td>
+<td>A selector to create a corresponding menu.</td>
+<td>null</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>number</td>
+
+<td>Defines duration time in milliseconds to show menu when hovering the button.</td>
+<td>100</td>
+</tr>
+</tbody></table>
+
+<h4>Methods</h4>
+<p>
+The methods extend from linkbutton, below is the added or overridden methods for splitbutton.
+</p>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>options</td>
+<td>none</td>
+<td>Return the options object.</td>
+</tr>
+<tr>
+<td>disable</td>
+<td>none</td>
+
+<td>Disable the menubutton.</td>
+</tr>
+<tr>
+<td>enable</td>
+<td>none</td>
+<td>Enable the menubutton.</td>
+</tr>
+<tr>
+<td>destroy</td>
+<td>none</td>
+<td>Destroy the menubutton.</td>
+</tr>
+</tbody></table>
+
+</div>
+</body>
+</html>

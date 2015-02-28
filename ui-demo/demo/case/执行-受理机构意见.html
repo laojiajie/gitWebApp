@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>执行-受理机构意见</title>
+	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<link rel="stylesheet" type="text/css" href="../../resource/css/form.css">
+	<script type="text/javascript" src="../../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+</head>
+<body class="easyui-layout">
+		<div data-options="region:'west',split:true" title="" style="width:200px;">
+			<div class="demo-info"><INPUT TYPE="radio" NAME="模板">模板<INPUT TYPE="radio" checked NAME="全打">全打<INPUT TYPE="radio" NAME="套打">套打</div>
+			<div class="easyui-layout" data-options="fit:true">
+				<div data-options="region:'north',split:true,border:false"  title="文书区" style="height:200px">
+				</div>
+				<div data-options="region:'center',border:false"  title="附件区"></div>
+				<div data-options="region:'south',split:true,border:false"  title="位置简图" style="height:200px"></div>
+			</div>
+		</div>
+		<div data-options="region:'center',title:'',iconCls:'icon-ok'">
+			<div class="easyui-tabs" data-options="fit:true,border:false,plain:true">
+				<div title="工作区" data-options="" style="padding:10px">
+
+					<div class="easyui-layout" data-options="fit:true">
+						<div data-options="region:'center',split:false,border:false">
+							<table cellpadding="0" cellspacing="0" border="0" class="form_tbl" >
+							<tr ><td width="160"></td><td width="260"></td><td width="160"></td><td ></td></tr>
+							<tr><td colspan="4"><h2 >基本信息</h2></td></tr>
+							<tr>
+								<td class="label">执行情况</td>
+								<td colspan="3"><textarea name="" style="width:570px; height:100px;"></textarea></td>
+							</tr>
+							<tr><td colspan="4"><h2 >受理机构意见</h2></td></tr>
+								<tr>
+									<td class="label" >意见</td>
+									<td colspan="3"><textarea name="" style="width:570px; height:100px;"></textarea>
+									<select class="easyui-combobox" style="width:570px;"></select>
+									</td>
+								</tr>
+								<tr>
+								<td class="label" >负责人</td>
+								<td ><input class="easyui-validatebox" type="text" style="width:150px;"></td>
+								<td class="label" >日期</td>
+								<td><input class="easyui-datetimebox"  value="10/11/2012 2:3:56" style="width:150px"></td>
+							</tr>
+							
+							</table>					
+						</div>
+						<div data-options="region:'south',border:false"  style="height:30px">
+						<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">提交</a>
+						<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-sum'">暂存</a>
+						<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-sum'">回退</a>
+						<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-tip'">转交</a>
+						<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'" >附件管理</a>							
+						</div>
+					</div>
+					
+				</div>
+				<div title="案件基本信息" data-options="" style="padding:10px">
+				</div>
+				<div title="处理情况" data-options="href:''" style="padding:10px">
+				</div>
+				<div title="工作流程" style="padding:5px">
+
+				</div>
+			</div>
+		</div>
+
+
+
+
+	
+
+
+<SCRIPT LANGUAGE="JavaScript">
+	    //显示新增窗口
+		$('#btn_1').click(function (){
+		   $('#win_1').window('open')
+		});	
+	    //显示新增窗口
+		$('#btn_2').click(function (){
+		   $('#win_2').window('open')
+		});	
+		//显示新增窗口
+		$('#btn_3').click(function (){
+		   $('#win_3').window('open')
+		});	
+		//显示新增窗口
+		$('#btn_4').click(function (){
+		   $('#win_4').window('open')
+		});	
+</SCRIPT>
+</body>
+</html>

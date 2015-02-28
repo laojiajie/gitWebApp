@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>parser</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>Parser</h3>
+<h4>Usage</h4>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">.</span><span class="pln">parser</span><span class="pun">.</span><span class="pln">parse</span><span class="pun">();</span><span class="pln">       </span><span class="com">// parse all the page</span></li><li class="L1"><span class="pln">$</span><span class="pun">.</span><span class="pln">parser</span><span class="pun">.</span><span class="pln">parse</span><span class="pun">(</span><span class="str">'#cc'</span><span class="pun">);</span><span class="pln">  </span><span class="com">// parse the specified node</span></li></ol></pre>
+
+<h4>Properties</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+
+<th><strong>Default</strong></th>
+</tr>
+<tr>
+<td>$.parser.auto</td>
+<td>boolean</td>
+<td>Defines if to auto parse the easyui component.</td>
+<td>true</td>
+</tr>
+</tbody></table>
+
+<h4>Events</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameters</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>$.parser.onComplete</td>
+
+<td>context</td>
+<td>Fires when parser finishing its parse action.</td>
+</tr>
+</tbody></table>
+
+<h4>Methods</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>$.parser.parse</td>
+<td>context</td>
+<td>Parse the easyui component.</td>
+</tr>
+</tbody></table>
+
+</div>
+</body>
+</html>

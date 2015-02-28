@@ -1,0 +1,523 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<title>Demo</title>
+<link rel="stylesheet" type="text/css" href="themes/metro/easyui.css" id="swicth-style">
+<script type="text/javascript" src="jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="jquery.easyui.min.js"></script>
+<style type="text/css">
+body {
+	font: 12px/20px "微软雅黑", "宋体", Arial, sans-serif, Verdana, Tahoma;
+	padding: 0;
+	margin: 0;
+}
+.layout-split-proxy-h{
+	position:absolute;
+	width:2px;
+	background:#888;
+	font-size:1px;
+	cursor:e-resize;
+	display:none;
+	z-index:5;
+}
+
+.layout-split-north{
+	border-bottom:5px solid #efefef;
+}
+.layout-split-south{
+	border-top:5px solid #efefef;
+}
+.layout-split-east{
+	border-left:0px solid #efefef;
+}
+.layout-split-west{
+	border-right:0px solid #efefef;
+}
+a:link {
+ text-decoration: none;
+}
+a:visited {
+ text-decoration: none;
+}
+a:hover {
+ text-decoration: underline;
+}
+a:active {
+ text-decoration: none;
+}
+.cs-north {
+	height:60px;
+}
+.cs-north-bg {
+	width: 100%;
+	height: 100%;
+	background: url(themes/gray/images/header_bg.png) repeat-x;
+}
+.cs-north-logo {
+	height: 40px;
+	margin: 15px 0px 0px 5px;
+	display: inline-block;
+	color:#000000;font-size:22px;font-weight:bold;text-decoration:none
+}
+.cs-west {
+	width:200px;padding:0px;
+}
+.cs-navi-tab {
+	padding: 5px;
+}
+.cs-tab-menu {
+	width:120px;
+}
+.cs-home-remark {
+	padding: 10px;
+}
+.wrapper {
+    float: right;
+    height: 30px;
+    margin-left: 10px;
+}
+.ui-skin-nav {
+    float: right;
+	padding: 0;
+	margin-right: 10px;
+	list-style: none outside none;
+	height: 30px;
+}
+
+.ui-skin-nav .li-skinitem {
+    float: left;
+    font-size: 12px;
+    line-height: 30px;
+	margin-left: 10px;
+    text-align: center;
+}
+.ui-skin-nav .li-skinitem span {
+	cursor: pointer;
+	width:10px;
+	height:10px;
+	display:inline-block;
+}
+.ui-skin-nav .li-skinitem span.cs-skin-on{
+	border: 1px solid #FFFFFF;
+}
+
+.ui-skin-nav .li-skinitem span.gray{background-color:gray;}
+.ui-skin-nav .li-skinitem span.default{background-color:blue;}
+.ui-skin-nav .li-skinitem span.bootstrap{background-color:#D7EBF9;}
+.ui-skin-nav .li-skinitem span.black{background-color:black;}
+.ui-skin-nav .li-skinitem span.metro{background-color:#FFE57E;}
+</style>
+<script type="text/javascript">
+function addTab(title, url){
+	if ($('#tabs').tabs('exists', title)){
+		$('#tabs').tabs('select', title);//选中并刷新
+		var currTab = $('#tabs').tabs('getSelected');
+		var url = $(currTab.panel('options').content).attr('src');
+		if(url != undefined && currTab.panel('options').title != 'Home') {
+			$('#tabs').tabs('update',{
+				tab:currTab,
+				options:{
+					content:createFrame(url)
+				}
+			})
+		}
+	} else {
+		var content = createFrame(url);
+		$('#tabs').tabs('add',{
+			title:title,
+			content:content,
+			closable:true
+		});
+	}
+	tabClose();
+}
+function createFrame(url) {
+	var s = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+	return s;
+}
+		
+function tabClose() {
+	/*双击关闭TAB选项卡*/
+	$(".tabs-inner").dblclick(function(){
+		var subtitle = $(this).children(".tabs-closable").text();
+		$('#tabs').tabs('close',subtitle);
+	})
+	/*为选项卡绑定右键*/
+	$(".tabs-inner").bind('contextmenu',function(e){
+		$('#mm').menu('show', {
+			left: e.pageX,
+			top: e.pageY
+		});
+
+		var subtitle =$(this).children(".tabs-closable").text();
+
+		$('#mm').data("currtab",subtitle);
+		$('#tabs').tabs('select',subtitle);
+		return false;
+	});
+}		
+//绑定右键菜单事件
+function tabCloseEven() {
+	//刷新
+	$('#mm-tabupdate').click(function(){
+		var currTab = $('#tabs').tabs('getSelected');
+		var url = $(currTab.panel('options').content).attr('src');
+		if(url != undefined && currTab.panel('options').title != 'Home') {
+			$('#tabs').tabs('update',{
+				tab:currTab,
+				options:{
+					content:createFrame(url)
+				}
+			})
+		}
+	})
+	//关闭当前
+	$('#mm-tabclose').click(function(){
+		var currtab_title = $('#mm').data("currtab");
+		$('#tabs').tabs('close',currtab_title);
+	})
+	//全部关闭
+	$('#mm-tabcloseall').click(function(){
+		$('.tabs-inner span').each(function(i,n){
+			var t = $(n).text();
+			if(t != 'Home') {
+				$('#tabs').tabs('close',t);
+			}
+		});
+	});
+	//关闭除当前之外的TAB
+	$('#mm-tabcloseother').click(function(){
+		var prevall = $('.tabs-selected').prevAll();
+		var nextall = $('.tabs-selected').nextAll();		
+		if(prevall.length>0){
+			prevall.each(function(i,n){
+				var t=$('a:eq(0) span',$(n)).text();
+				if(t != 'Home') {
+					$('#tabs').tabs('close',t);
+				}
+			});
+		}
+		if(nextall.length>0) {
+			nextall.each(function(i,n){
+				var t=$('a:eq(0) span',$(n)).text();
+				if(t != 'Home') {
+					$('#tabs').tabs('close',t);
+				}
+			});
+		}
+		return false;
+	});
+	//关闭当前右侧的TAB
+	$('#mm-tabcloseright').click(function(){
+		var nextall = $('.tabs-selected').nextAll();
+		if(nextall.length==0){
+			//msgShow('系统提示','后边没有啦~~','error');
+			alert('后边没有啦~~');
+			return false;
+		}
+		nextall.each(function(i,n){
+			var t=$('a:eq(0) span',$(n)).text();
+			$('#tabs').tabs('close',t);
+		});
+		return false;
+	});
+	//关闭当前左侧的TAB
+	$('#mm-tabcloseleft').click(function(){
+		var prevall = $('.tabs-selected').prevAll();
+		if(prevall.length==0){
+			alert('到头了，前边没有啦~~');
+			return false;
+		}
+		prevall.each(function(i,n){
+			var t=$('a:eq(0) span',$(n)).text();
+			$('#tabs').tabs('close',t);
+		});
+		return false;
+	});
+
+	//退出
+	$("#mm-exit").click(function(){
+		$('#mm').menu('hide');
+	})
+}
+
+$(function() {
+	tabCloseEven();
+
+	$('.cs-navi-tab').click(function() {
+		var $this = $(this);
+		var href = $this.attr('src');
+		var title = $this.text();
+		addTab(title, href);
+	});
+
+	var themes = {
+		'gray' : 'themes/gray/easyui.css',
+		'black' : 'themes/black/easyui.css',
+		'bootstrap' : 'themes/bootstrap/easyui.css',
+		'default' : 'themes/default/easyui.css',
+		'metro' : 'themes/metro/easyui.css'
+	};
+
+	var skins = $('.li-skinitem span').click(function() {
+		var $this = $(this);
+		if($this.hasClass('cs-skin-on')) return;
+		skins.removeClass('cs-skin-on');
+		$this.addClass('cs-skin-on');
+		var skin = $this.attr('rel');
+		$('#swicth-style').attr('href', themes[skin]);
+		setCookie('cs-skin', skin);
+		skin == 'dark-hive' ? $('.cs-north-logo').css('color', '#FFFFFF') : $('.cs-north-logo').css('color', '#000000');
+	});
+
+	if(getCookie('cs-skin')) {
+		var skin = getCookie('cs-skin');
+		$('#swicth-style').attr('href', themes[skin]);
+		$this = $('.li-skinitem span[rel='+skin+']');
+		$this.addClass('cs-skin-on');
+		skin == 'dark-hive' ? $('.cs-north-logo').css('color', '#FFFFFF') : $('.cs-north-logo').css('color', '#000000');
+	}
+});
+
+
+function setCookie(name,value) {//两个参数，一个是cookie的名子，一个是值
+    var Days = 30; //此 cookie 将被保存 30 天
+    var exp = new Date();    //new Date("December 31, 9998");
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+}
+
+function getCookie(name) {//取cookies函数        
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+     if(arr != null) return unescape(arr[2]); return null;
+}
+</script>
+</head>
+<body class="easyui-layout">
+	<div region="north" border="true" class="cs-north">
+		<div class="cs-north-bg">
+		<div class="cs-north-logo">jQuery EasyUI 1.3.4 Demo</div>
+		<ul class="ui-skin-nav">				
+			<li class="li-skinitem" title="gray"><span class="gray" rel="gray"></span></li>
+			<li class="li-skinitem" title="default"><span class="default" rel="default"></span></li>
+			<li class="li-skinitem" title="bootstrap"><span class="bootstrap" rel="bootstrap"></span></li>
+			<li class="li-skinitem" title="black"><span class="black" rel="black"></span></li>
+			<li class="li-skinitem" title="metro"><span class="metro" rel="metro"></span></li>
+		</ul>	
+		</div>
+	</div>
+	<div region="west" border="true" split="true" title="Navigation" class="cs-west">
+		<div class="easyui-accordion" fit="true" border="false">
+                <div title="赔补偿案件"> 
+					<a href="javascript:void(0);" src="demo/case/10-main.html" class="cs-navi-tab">01-立案</a></p>
+					<a href="javascript:void(0);" src="demo/case/20-main.html" class="cs-navi-tab">02-调查取证</a></p>
+					<a href="javascript:void(0);" src="demo/case/30-main.html" class="cs-navi-tab">03-告知权力</a></p>
+					<a href="javascript:void(0);" src="demo/case/40-main.html" class="cs-navi-tab">04-执行环节</a></p>
+					<a href="javascript:void(0);" src="demo/case/50-main.html" class="cs-navi-tab">05-组卷环节</a></p>
+				</div>
+
+				<div title="处罚案件">
+					<a href="javascript:void(0);" src="demo/case2/10-main.html" class="cs-navi-tab">01-立案</a></p>
+					<a href="javascript:void(0);" src="demo/case2/20-main.html" class="cs-navi-tab">02-调查取证</a></p>
+					<a href="javascript:void(0);" src="demo/case2/30-main.html" class="cs-navi-tab">03-审核</a></p>
+					<a href="javascript:void(0);" src="demo/case2/40-main.html" class="cs-navi-tab">04-审批</a></p>
+					<a href="javascript:void(0);" src="demo/case2/50-main.html" class="cs-navi-tab">05-告知权力</a></p>
+					<a href="javascript:void(0);" src="demo/case2/60-main.html" class="cs-navi-tab">06-处罚决定</a></p>
+					<a href="javascript:void(0);" src="demo/case2/70-main.html" class="cs-navi-tab">07-执行</a></p>
+					<a href="javascript:void(0);" src="demo/case2/80-main.html" class="cs-navi-tab">08-组卷</a></p>
+					
+				</div>
+				<div title="Layout">
+					<a href="javascript:void(0);" src="demo/accordion/basic.html" class="cs-navi-tab">accordion-basic</a></p>
+					<a href="javascript:void(0);" src="demo/accordion/actions.html" class="cs-navi-tab">accordion-actions</a></p>
+					<a href="javascript:void(0);" src="demo/accordion/tools.html" class="cs-navi-tab">accordion-tools</a></p>
+					<a href="javascript:void(0);" src="demo/accordion/ajax.html" class="cs-navi-tab">accordion-ajax</a></p>
+
+					<a href="javascript:void(0);" src="demo/layout/basic.html" class="cs-navi-tab">layout-basic</a></p>
+					<a href="javascript:void(0);" src="demo/layout/complex.html" class="cs-navi-tab">layout-complex</a></p>
+					<a href="javascript:void(0);" src="demo/layout/full.html" class="cs-navi-tab">layout-full</a></p>
+					<a href="javascript:void(0);" src="demo/layout/addremove.html" class="cs-navi-tab">layout-addremove</a></p>
+					<a href="javascript:void(0);" src="demo/layout/nestedlayout.html" class="cs-navi-tab">layout-nestedlayout</a></p>
+					<a href="javascript:void(0);" src="demo/layout/nocollapsible.html" class="cs-navi-tab">layout-nocollapsible</a></p>
+
+					<a href="javascript:void(0);" src="demo/panel/basic.html" class="cs-navi-tab">panel-basic</a></p>
+					<a href="javascript:void(0);" src="demo/panel/customtools.html" class="cs-navi-tab">panel-customtools</a></p>
+					<a href="javascript:void(0);" src="demo/panel/loadcontent.html" class="cs-navi-tab">panel-loadcontent</a></p>
+					<a href="javascript:void(0);" src="demo/panel/nestedpanel.html" class="cs-navi-tab">panel-nestedpanel</a></p>
+					<a href="javascript:void(0);" src="demo/panel/paneltools.html" class="cs-navi-tab">panel-paneltools</a></p>
+
+					<a href="javascript:void(0);" src="demo/tabs/basic.html" class="cs-navi-tab">tabs-basic</a></p>
+					<a href="javascript:void(0);" src="demo/tabs/autoheight.html" class="cs-navi-tab">tabs-autoheight</a></p>
+					<a href="javascript:void(0);" src="demo/tabs/hover.html" class="cs-navi-tab">tabs-hover</a></p>
+					<a href="javascript:void(0);" src="demo/tabs/nestedtabs.html" class="cs-navi-tab">tabs-nestedtabs</a></p>
+					<a href="javascript:void(0);" src="demo/tabs/striptools.html" class="cs-navi-tab">tabs-striptools</a></p>
+					<a href="javascript:void(0);" src="demo/tabs/tabposition.html" class="cs-navi-tab">tabs-tabposition</a></p>
+					<a href="javascript:void(0);" src="demo/tabs/tabstools.html" class="cs-navi-tab">tabs-tabstools</a></p>
+				</div>
+				<div title="Menu and Button">
+					<a href="javascript:void(0);" src="demo/menu/basic.html" class="cs-navi-tab">menu-basic</a></p>
+					<a href="javascript:void(0);" src="demo/menu/customitem.html" class="cs-navi-tab">menu-customitem</a></p>
+					<a href="javascript:void(0);" src="demo/menu/events.html" class="cs-navi-tab">menu-events</a></p>
+
+					<a href="javascript:void(0);" src="demo/menubutton/basic.html" class="cs-navi-tab">menubutton-basic</a></p>
+					<a href="javascript:void(0);" src="demo/menubutton/actions.html" class="cs-navi-tab">menubutton-actions</a></p>
+
+					<a href="javascript:void(0);" src="demo/linkbutton/basic.html" class="cs-navi-tab">linkbutton-basic</a></p>
+					<a href="javascript:void(0);" src="demo/linkbutton/iconalign.html" class="cs-navi-tab">linkbutton-iconalign</a></p>
+					<a href="javascript:void(0);" src="demo/linkbutton/plain.html" class="cs-navi-tab">linkbutton-plain</a></p>
+
+					<a href="javascript:void(0);" src="demo/splitbutton/basic.html" class="cs-navi-tab">splitbutton-basic</a></p>
+					<a href="javascript:void(0);" src="demo/splitbutton/actions.html" class="cs-navi-tab">splitbutton-actions</a></p>
+				</div>
+				<div title="Form">
+					<a href="javascript:void(0);" src="demo/form/basic.html" class="cs-navi-tab">form-basic</a></p>
+					<a href="javascript:void(0);" src="demo/form/load.html" class="cs-navi-tab">form-load</a></p>
+
+					<a href="javascript:void(0);" src="demo/validatebox/basic.html" class="cs-navi-tab">validatebox</a></p>
+
+					<a href="javascript:void(0);" src="demo/combo/basic.html" class="cs-navi-tab">combo</a></p>
+
+					<a href="javascript:void(0);" src="demo/combobox/basic.html" class="cs-navi-tab">combobox-basic</a></p>
+					<a href="javascript:void(0);" src="demo/combobox/actions.html" class="cs-navi-tab">combobox-actions</a></p>
+					<a href="javascript:void(0);" src="demo/combobox/customformat.html" class="cs-navi-tab">combobox-customformat</a></p>
+					<a href="javascript:void(0);" src="demo/combobox/dynamicdata.html" class="cs-navi-tab">combobox-dynamicdata</a></p>
+					<a href="javascript:void(0);" src="demo/combobox/multiple.html" class="cs-navi-tab">combobox-multiple</a></p>
+					<a href="javascript:void(0);" src="demo/combobox/remotedata.html" class="cs-navi-tab">combobox-remotedata</a></p>
+					<a href="javascript:void(0);" src="demo/combobox/remotejsonp.html" class="cs-navi-tab">combobox-remotejsonp</a></p>
+
+					<a href="javascript:void(0);" src="demo/combotree/basic.html" class="cs-navi-tab">combotree-basic</a></p>
+					<a href="javascript:void(0);" src="demo/combotree/actions.html" class="cs-navi-tab">combotree-actions</a></p>
+					<a href="javascript:void(0);" src="demo/combotree/initvalue.html" class="cs-navi-tab">combotree-initvalue</a></p>
+					<a href="javascript:void(0);" src="demo/combotree/multiple.html" class="cs-navi-tab">combotree-multiple</a></p>
+
+					<a href="javascript:void(0);" src="demo/combogrid/basic.html" class="cs-navi-tab">combogrid-basic</a></p>
+					<a href="javascript:void(0);" src="demo/combogrid/actions.html" class="cs-navi-tab">combogrid-actions</a></p>
+					<a href="javascript:void(0);" src="demo/combogrid/initvalue.html" class="cs-navi-tab">combogrid-initvalue</a></p>
+					<a href="javascript:void(0);" src="demo/combogrid/multiple.html" class="cs-navi-tab">combogrid-multiple</a></p>
+
+					<a href="javascript:void(0);" src="demo/numberbox/basic.html" class="cs-navi-tab">numberbox-basic</a></p>
+					<a href="javascript:void(0);" src="demo/numberbox/format.html" class="cs-navi-tab">numberbox-format</a></p>
+					<a href="javascript:void(0);" src="demo/numberbox/range.html" class="cs-navi-tab">numberbox-range</a></p>
+
+					<a href="javascript:void(0);" src="demo/datebox/basic.html" class="cs-navi-tab">datebox-basic</a></p>
+					<a href="javascript:void(0);" src="demo/datebox/dateformat.html" class="cs-navi-tab">datebox-dateformat</a></p>
+					<a href="javascript:void(0);" src="demo/datebox/events.html" class="cs-navi-tab">datebox-events</a></p>
+					<a href="javascript:void(0);" src="demo/datebox/validate.html" class="cs-navi-tab">datebox-validate</a></p>
+
+					<a href="javascript:void(0);" src="demo/datetimebox/basic.html" class="cs-navi-tab">datetimebox-basic</a></p>
+					<a href="javascript:void(0);" src="demo/datetimebox/initvalue.html" class="cs-navi-tab">datetimebox-initvalue</a></p>
+					<a href="javascript:void(0);" src="demo/datetimebox/showseconds.html" class="cs-navi-tab">datetimebox-showseconds</a></p>
+
+					<a href="javascript:void(0);" src="demo/calendar/basic.html" class="cs-navi-tab">calendar-basic</a></p>
+					<a href="javascript:void(0);" src="demo/calendar/firstday.html" class="cs-navi-tab">calendar-firstday</a></p>
+
+					<a href="javascript:void(0);" src="demo/timespinner/basic.html" class="cs-navi-tab">timespinner-basic</a></p>
+					<a href="javascript:void(0);" src="demo/timespinner/actions.html" class="cs-navi-tab">timespinner-actions</a></p>
+					<a href="javascript:void(0);" src="demo/timespinner/range.html" class="cs-navi-tab">timespinner-range</a></p>
+
+					<a href="javascript:void(0);" src="demo/numberspinner/basic.html" class="cs-navi-tab">numberspinner-basic</a></p>
+					<a href="javascript:void(0);" src="demo/numberspinner/increment.html" class="cs-navi-tab">numberspinner-increment</a></p>
+					<a href="javascript:void(0);" src="demo/numberspinner/range.html" class="cs-navi-tab">numberspinner-range</a></p>
+
+					<a href="javascript:void(0);" src="demo/slider/basic.html" class="cs-navi-tab">slider-basic</a></p>
+					<a href="javascript:void(0);" src="demo/slider/formattip.html" class="cs-navi-tab">slider-formattip</a></p>
+					<a href="javascript:void(0);" src="demo/slider/rule.html" class="cs-navi-tab">slider-rule</a></p>
+					<a href="javascript:void(0);" src="demo/slider/vertical.html" class="cs-navi-tab">slider-vertical</a></p>
+				</div>
+				<div title="Window">
+					<a href="javascript:void(0);" src="demo/window/basic.html" class="cs-navi-tab">window-basic</a></p>
+					<a href="javascript:void(0);" src="demo/window/customtools.html" class="cs-navi-tab">window-customtools</a></p>
+					<a href="javascript:void(0);" src="demo/window/inlinewindow.html" class="cs-navi-tab">window-inlinewindow</a></p>
+					<a href="javascript:void(0);" src="demo/window/modalwindow.html" class="cs-navi-tab">window-modalwindow</a></p>
+					<a href="javascript:void(0);" src="demo/window/windowlayout.html" class="cs-navi-tab">window-windowlayout</a></p>
+
+					<a href="javascript:void(0);" src="demo/dialog/basic.html" class="cs-navi-tab">dialog-basic</a></p>
+					<a href="javascript:void(0);" src="demo/dialog/complextoolbar.html" class="cs-navi-tab">dialog-complextoolbar</a></p>
+					<a href="javascript:void(0);" src="demo/dialog/toolbarbuttons.html" class="cs-navi-tab">dialog-toolbarbuttons</a></p>
+
+					<a href="javascript:void(0);" src="demo/messager/basic.html" class="cs-navi-tab">messager-basic</a></p>
+					<a href="javascript:void(0);" src="demo/messager/alert.html" class="cs-navi-tab">messager-alert</a></p>
+					<a href="javascript:void(0);" src="demo/messager/interactive.html" class="cs-navi-tab">messager-interactive</a></p>
+					<a href="javascript:void(0);" src="demo/messager/position.html" class="cs-navi-tab">messager-position</a></p>
+				</div>
+				<div title="DataGrid and Tree">
+					<a href="javascript:void(0);" src="demo/datagrid/basic.html" class="cs-navi-tab">datagrid-basic</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/cellstyle.html" class="cs-navi-tab">datagrid-cellstyle</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/checkbox.html" class="cs-navi-tab">datagrid-checkbox</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/clientpagination.html" class="cs-navi-tab">datagrid-clientpagination</a></p>
+
+					<a href="javascript:void(0);" src="demo/datagrid/columngroup.html" class="cs-navi-tab">datagrid-columngroup</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/complextoolbar.html" class="cs-navi-tab">datagrid-complextoolbar</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/contextmenu.html" class="cs-navi-tab">datagrid-contextmenu</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/custompager.html" class="cs-navi-tab">datagrid-custompager</a></p>
+
+					<a href="javascript:void(0);" src="demo/datagrid/footer.html" class="cs-navi-tab">datagrid-footer</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/formatcolumns.html" class="cs-navi-tab">datagrid-formatcolumns</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/frozencolumns.html" class="cs-navi-tab">datagrid-frozencolumns</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/frozenrows.html" class="cs-navi-tab">datagrid-frozenrows</a></p>
+
+					<a href="javascript:void(0);" src="demo/datagrid/mergecells.html" class="cs-navi-tab">datagrid-mergecells</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/rowborder.html" class="cs-navi-tab">datagrid-rowborder</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/rowediting.html" class="cs-navi-tab">datagrid-rowediting</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/rowstyle.html" class="cs-navi-tab">datagrid-rowstyle</a></p>
+
+					<a href="javascript:void(0);" src="demo/datagrid/selection.html" class="cs-navi-tab">datagrid-selection</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/simpletoolbar.html" class="cs-navi-tab">datagrid-simpletoolbar</a></p>
+					<a href="javascript:void(0);" src="demo/datagrid/transform.html" class="cs-navi-tab">datagrid-transform</a></p>
+
+					<a href="javascript:void(0);" src="demo/propertygrid/basic.html" class="cs-navi-tab">propertygrid-basic</a></p>
+					<a href="javascript:void(0);" src="demo/propertygrid/customcolumns.html" class="cs-navi-tab">propertygrid-customcolumns</a></p>
+					<a href="javascript:void(0);" src="demo/propertygrid/groupformat.html" class="cs-navi-tab">propertygrid-groupformat</a></p>
+
+					<a href="javascript:void(0);" src="demo/tree/basic.html" class="cs-navi-tab">tree-basic</a></p>
+					<a href="javascript:void(0);" src="demo/tree/animation.html" class="cs-navi-tab">tree-animation</a></p>
+					<a href="javascript:void(0);" src="demo/tree/actions.html" class="cs-navi-tab">tree-actions</a></p>
+					<a href="javascript:void(0);" src="demo/tree/checkbox.html" class="cs-navi-tab">tree-checkbox</a></p>
+
+					<a href="javascript:void(0);" src="demo/tree/contextmenu.html" class="cs-navi-tab">tree-contextmenu</a></p>
+					<a href="javascript:void(0);" src="demo/tree/dnd.html" class="cs-navi-tab">tree-dnd</a></p>
+					<a href="javascript:void(0);" src="demo/tree/editable.html" class="cs-navi-tab">tree-editable</a></p>
+					<a href="javascript:void(0);" src="demo/tree/icons.html" class="cs-navi-tab">tree-icons</a></p>
+
+					<a href="javascript:void(0);" src="demo/treegrid/basic.html" class="cs-navi-tab">treegrid-basic</a></p>
+					<a href="javascript:void(0);" src="demo/treegrid/editable.html" class="cs-navi-tab">treegrid-editable</a></p>
+					<a href="javascript:void(0);" src="demo/treegrid/actions.html" class="cs-navi-tab">treegrid-actions</a></p>
+
+					<a href="javascript:void(0);" src="demo/treegrid/contextmenu.html" class="cs-navi-tab">treegrid-contextmenu</a></p>
+					<a href="javascript:void(0);" src="demo/treegrid/footer.html" class="cs-navi-tab">treegrid-footer</a></p>
+					<a href="javascript:void(0);" src="demo/treegrid/reports.html" class="cs-navi-tab"><image src="">treegrid-reports</a></p>
+				</div>
+		</div>
+	</div>
+	<div id="mainPanle" region="center" border="true" border="false">
+		 <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
+                <div title="Home">
+				<div class="cs-home-remark">
+					<h1>jQuery EasyUI 1.3.4 Demo</h1> <br>
+					制作：purediy <br>
+					博客：<a href="http://www.cnblogs.com/purediy" target="_blank">http://www.cnblogs.com/purediy</a><br>
+
+							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#w').window('open')">Open</a><br>
+	              	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#w').window('close')">Close</a><br>
+					说明：jQuery EasyUI 1.3.4 Demo分类整理。
+				</div>
+				</div>
+        </div>
+	</div>
+
+	<div region="south" border="false" id="south"><center>@tianshaojie@foxmail.com</center></div>
+	
+	<div id="mm" class="easyui-menu cs-tab-menu">
+		<div id="mm-tabupdate">刷新</div>
+		<div class="menu-sep"></div>
+		<div id="mm-tabclose">关闭</div>
+		<div id="mm-tabcloseother">关闭其他</div>
+		<div id="mm-tabcloseall" >关闭全部</div>
+	</div>
+	<div id="w" class="easyui-window" title="Modal Window" data-options="modal:true,closed:true,minimizable:false,maximizable:false,collapsible:false,closable:true,
+	iconCls:'icon-save'" style="width:500px;height:200px;padding:10px;">
+		<iframe id="iframeid" src="" style="width:320px; height:280px; float:left;"></iframe>  
+	</div>
+</body>
+</html>

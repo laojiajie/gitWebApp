@@ -1,0 +1,103 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>droppable</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>Droppable</h3>
+<p>Override defaults with $.fn.droppable.defaults.</p>
+
+<h4>Usage Example</h4>
+<p>Create a droppable area from markup.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-droppable"</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"accept:'#d1,#d3'"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="pln">height</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;</span></li><li class="L1"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
+<p>Create a droppable area using javascript.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"dd"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="pln">height</span><span class="pun">:</span><span class="lit">100px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;&lt;/div&gt;</span></li></ol></pre>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'#dd'</span><span class="pun">).</span><span class="pln">droppable</span><span class="pun">({</span></li><li class="L1"><span class="pln">    accept</span><span class="pun">:</span><span class="str">'#d1,#d3'</span></li><li class="L2"><span class="pun">});</span></li></ol></pre>
+
+<br>
+<h4>Properties</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+
+<th><strong>Description</strong></th>
+<th><strong>Default</strong></th>
+</tr>
+<tr>
+<td>accept</td>
+<td>selector</td>
+<td>Determine which draggable element will be accepted</td>
+<td>null</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>boolean</td>
+<td>True to stop droppable</td>
+<td>false</td>
+</tr>
+</tbody></table>
+
+<h4>Events</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameters</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+
+<td>onDragEnter</td>
+<td>e,source</td>
+<td>Fires when the draggable element is dragged enter. The source parameter indicate the dragged DOM element.</td>
+</tr>
+<tr>
+<td>onDragOver</td>
+<td>e,source</td>
+<td>Fires when the draggable element is dragged over. The source parameter indicate the dragged DOM element.</td>
+</tr>
+<tr>
+<td>onDragLeave</td>
+
+<td>e,source</td>
+<td>Fires when the draggable element is dragged leave. The source parameter indicate the dragged DOM element.</td>
+</tr>
+<tr>
+<td>onDrop</td>
+<td>e,source</td>
+<td>Fires when the draggable element is dropped. The source parameter indicate the dragged DOM element.</td>
+</tr>
+</tbody></table>
+
+<h4>Methods</h4>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>options</td>
+<td>none</td>
+<td>Return the options object.</td>
+</tr>
+<tr>
+<td>enable</td>
+<td>none</td>
+<td>Enable the droppable functionality.</td>
+</tr>
+<tr>
+<td>disable</td>
+<td>none</td>
+<td>Disable the droppable functionality.</td>
+</tr>
+</tbody></table>
+
+</div>
+</body>
+</html>

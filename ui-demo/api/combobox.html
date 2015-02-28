@@ -1,0 +1,314 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>combobox</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="js/prettify.js"></script>
+</head>
+<body style="text-align:left">
+<div style="padding:10px">
+
+<h3>ComboBox</h3>
+<p>Extend from $.fn.combo.defaults. Override defaults with $.fn.combobox.defaults.</p>
+<p>
+The combobox display a editable text box and drop-down list, from which the user can select one or multiple values.
+The user can type text directly into the top of list, or select one or more of present values from the list.
+</p>
+<img src="images/combobox.png">
+
+<h4>Dependencies</h4>
+<ul>
+	<li>combo</li>
+</ul>
+
+<h4>Usage Example</h4>
+<p>Create combobox from &lt;select&gt; element with a pre-defined structure.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;select</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"cc"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-combobox"</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"dept"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">200px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">    </span><span class="tag">&lt;option</span><span class="pln"> </span><span class="atn">value</span><span class="pun">=</span><span class="atv">"aa"</span><span class="tag">&gt;</span><span class="pln">aitem1</span><span class="tag">&lt;/option&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;option&gt;</span><span class="pln">bitem2</span><span class="tag">&lt;/option&gt;</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;option&gt;</span><span class="pln">bitem3</span><span class="tag">&lt;/option&gt;</span></li><li class="L4"><span class="pln">    </span><span class="tag">&lt;option&gt;</span><span class="pln">ditem4</span><span class="tag">&lt;/option&gt;</span></li><li class="L5"><span class="pln">    </span><span class="tag">&lt;option&gt;</span><span class="pln">eitem5</span><span class="tag">&lt;/option&gt;</span></li><li class="L6"><span class="tag">&lt;/select&gt;</span></li></ol></pre>
+<p>Create combobox from &lt;input&gt; markup.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"cc"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-combobox"</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"dept"</span></li><li class="L1"><span class="pln">    </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"valueField:'id',textField:'text',url:'get_data.php'"</span><span class="tag">&gt;</span></li></ol></pre>
+<p>Create combobox using javascript.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"cc"</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"dept"</span><span class="pln"> </span><span class="atn">value</span><span class="pun">=</span><span class="atv">"aa"</span><span class="tag">&gt;</span></li></ol></pre>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'#cc'</span><span class="pun">).</span><span class="pln">combobox</span><span class="pun">({</span></li><li class="L1"><span class="pln">    url</span><span class="pun">:</span><span class="str">'combobox_data.json'</span><span class="pun">,</span></li><li class="L2"><span class="pln">    valueField</span><span class="pun">:</span><span class="str">'id'</span><span class="pun">,</span></li><li class="L3"><span class="pln">    textField</span><span class="pun">:</span><span class="str">'text'</span></li><li class="L4"><span class="pun">});</span></li></ol></pre>
+<p>Create two dependent comboboxes.</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"cc1"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-combobox"</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"</span></li><li class="L1"><span class="atv">        valueField: 'id',</span></li><li class="L2"><span class="atv">        textField: 'text',</span></li><li class="L3"><span class="atv">        url: 'get_data1.php',</span></li><li class="L4"><span class="atv">        onSelect: function(rec){</span></li><li class="L5"><span class="atv">            var url = 'get_data2.php?id='+rec.id;</span></li><li class="L6"><span class="atv">            $('#cc2').combobox('reload', url);</span></li><li class="L7"><span class="atv">        }"</span><span class="tag">&gt;</span></li><li class="L8"><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"cc2"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"easyui-combobox"</span><span class="pln"> </span><span class="atn">data-options</span><span class="pun">=</span><span class="atv">"valueField:'id',textField:'text'"</span><span class="tag">&gt;</span></li></ol></pre>
+
+<p>The json data format sample:</p>
+<pre class="prettyprint linenums prettyprinted" name="code" style=""><ol class="linenums"><li class="L0"><span class="pun">[{</span></li><li class="L1"><span class="pln">    </span><span class="str">"id"</span><span class="pun">:</span><span class="lit">1</span><span class="pun">,</span></li><li class="L2"><span class="pln">    </span><span class="str">"text"</span><span class="pun">:</span><span class="str">"text1"</span></li><li class="L3"><span class="pun">},{</span></li><li class="L4"><span class="pln">    </span><span class="str">"id"</span><span class="pun">:</span><span class="lit">2</span><span class="pun">,</span></li><li class="L5"><span class="pln">    </span><span class="str">"text"</span><span class="pun">:</span><span class="str">"text2"</span></li><li class="L6"><span class="pun">},{</span></li><li class="L7"><span class="pln">    </span><span class="str">"id"</span><span class="pun">:</span><span class="lit">3</span><span class="pun">,</span></li><li class="L8"><span class="pln">    </span><span class="str">"text"</span><span class="pun">:</span><span class="str">"text3"</span><span class="pun">,</span></li><li class="L9"><span class="pln">    </span><span class="str">"selected"</span><span class="pun">:</span><span class="kwd">true</span></li><li class="L0"><span class="pun">},{</span></li><li class="L1"><span class="pln">    </span><span class="str">"id"</span><span class="pun">:</span><span class="lit">4</span><span class="pun">,</span></li><li class="L2"><span class="pln">    </span><span class="str">"text"</span><span class="pun">:</span><span class="str">"text4"</span></li><li class="L3"><span class="pun">},{</span></li><li class="L4"><span class="pln">    </span><span class="str">"id"</span><span class="pun">:</span><span class="lit">5</span><span class="pun">,</span></li><li class="L5"><span class="pln">    </span><span class="str">"text"</span><span class="pun">:</span><span class="str">"text5"</span></li><li class="L6"><span class="pun">}]</span></li></ol></pre>
+
+<h4>Properties</h4>
+<p>The properties extend from combo, below is the added properties for combobox.</p>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Default</strong></th>
+</tr>
+<tr>
+
+<td>valueField</td>
+<td>string</td>
+<td>The underlying data value name to bind to this ComboBox.</td>
+<td>value</td>
+</tr>
+<tr>
+<td>textField</td>
+<td>string</td>
+<td>The underlying data field name to bind to this ComboBox.</td>
+<td>text</td>
+
+</tr>
+<tr>
+<td>groupField</td>
+<td>string</td>
+<td>Indicate what field to be grouped. This property is available since version 1.3.4.</td>
+<td>null</td>
+</tr>
+<tr>
+<td>groupFormatter</td>
+<td>function(group)</td>
+<td>
+return group text to display on group item. This property is available since version 1.3.4.
+<p>Code example:</p>
+<pre>$('#cc').combobox({
+	groupFormatter: function(group){
+		return '&lt;span style="color:red"&gt;' + group + '&lt;/span&gt;';
+	}
+});
+</pre>
+</td>
+<td></td>
+</tr>
+<tr>
+<td>mode</td>
+<td>string</td>
+<td>
+Defines how to load list data when text changed.
+Set to 'remote' if the combobox loads from server.
+When set to 'remote' mode, what the user types will be sent as the http request parameter named 'q' to server to retrieve the new data.
+</td>
+<td>local</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>A URL to load list data from remote.</td>
+
+<td>null</td>
+</tr>
+<tr>
+<td>method</td>
+<td>string</td>
+<td>The http method to retrieve data.</td>
+<td>post</td>
+</tr>
+<tr>
+<td>data</td>
+<td>array</td>
+
+<td>
+The list data to be loaded.
+<p>Code example:</p>
+<pre>&lt;input class="easyui-combobox" data-options="
+		valueField: 'label',
+		textField: 'value',
+		data: [{
+			label: 'java',
+			value: 'Java'
+		},{
+			label: 'perl',
+			value: 'Perl'
+		},{
+			label: 'ruby',
+			value: 'Ruby'
+		}]" /&gt;
+</pre>
+</td>
+<td>null</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>function</td>
+<td>Defines how to filter the local data when 'mode' is set to 'local'. The function takes two parameters:<br>
+q: the user typed text.<br>
+row: the list row data.<br>
+Return true to allow the row to be displayed.
+<p>Code example:</p>
+<pre>$('#cc').combobox({
+	filter: function(q, row){
+		var opts = $(this).combobox('options');
+		return row[opts.textField].indexOf(q) == 0;
+	}
+});
+</pre>
+</td>
+
+<td></td>
+</tr>
+<tr>
+<td>formatter</td>
+<td>function</td>
+<td>
+Defineds how to render the row. The function takes one parameter: row.
+<p>Code example:</p>
+<pre>$('#cc').combobox({
+	formatter: function(row){
+		var opts = $(this).combobox('options');
+		return row[opts.textField];
+	}
+});
+</pre>
+</td>
+<td></td>
+</tr>
+<tr>
+<td>loader</td>
+<td>function(param,success,error)</td>
+<td>
+Defines how to load data from remote server. Return false can abort this action.
+This function takes following parameters:<br>
+param: the parameter object to pass to remote server.<br>
+success(data): the callback function that will be called when retrieve data successfully.<br>
+error(): the callback function that will be called when failed to retrieve data.
+</td>
+<td>json loader</td>
+</tr>
+<tr>
+<td>loadFilter</td>
+<td>function(data)</td>
+<td>
+Return the filtered data to display. This property is available since version 1.3.3.
+</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<br>
+<h4>Events</h4>
+<p>The events extend from combo, below is the added events for combobox.</p>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameters</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>onBeforeLoad</td>
+<td>param</td>
+<td>
+Fires before a request is made to load data, return false to cancel this load action.
+<p>Code example:</p>
+<pre>// change the http request parameters before load data from server
+$('#cc').combobox({
+	onBeforeLoad: function(param){
+		param.id = 2;
+		param.language = 'js';
+	}
+});
+</pre>
+</td>
+</tr>
+<tr>
+<td>onLoadSuccess</td>
+
+<td>none</td>
+<td>Fires when remote data is loaded successfully.</td>
+</tr>
+<tr>
+<td>onLoadError</td>
+<td>none</td>
+<td>Fires when remote data load error.</td>
+</tr>
+<tr>
+<td>onSelect</td>
+<td>record</td>
+
+<td>Fires when user select a list item.</td>
+</tr>
+<tr>
+<td>onUnselect</td>
+<td>record</td>
+<td>Fires when user unselect a list item.</td>
+</tr>
+</tbody></table>
+
+<br>
+<h4>Methods</h4>
+<p>The methods extend from combo, below is the added or overridden methods for combobox.</p>
+<table class="doc-table">
+<tbody><tr>
+<th><strong>Name</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>options</td>
+
+<td>none</td>
+<td>Return the options object.</td>
+</tr>
+<tr>
+<td>getData</td>
+<td>none</td>
+<td>Return the loaded data.</td>
+</tr>
+<tr>
+<td>loadData</td>
+<td>data</td>
+
+<td>Load the locale list data.</td>
+</tr>
+<tr>
+<td>reload</td>
+<td>url</td>
+<td>
+Request the remote list data. Pass the 'url' parameter to override the original URL value.
+<p>Code example:</p>
+<pre>$('#cc').combobox('reload');  // reload list data using old URL
+$('#cc').combobox('reload','get_data.php');  // reload list data using new URL
+</pre>
+</td>
+</tr>
+<tr>
+<td>setValues</td>
+<td>values</td>
+<td>
+Set the combobox value array.
+<p>Code example:</p>
+<pre>$('#cc').combobox('setValues', ['001','002']);
+</pre>
+</td>
+</tr>
+<tr>
+<td>setValue</td>
+<td>value</td>
+<td>
+Set the combobox value.
+<p>Code example:</p>
+<pre>$('#cc').combobox('setValue', '001');
+</pre>
+</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>none</td>
+<td>Clear the combobox value.</td>
+</tr>
+
+<tr>
+<td>select</td>
+<td>value</td>
+<td>Select the specified item.</td>
+</tr>
+<tr>
+<td>unselect</td>
+<td>value</td>
+<td>Unselect the specified item.</td>
+</tr>
+</tbody></table>
+
+
+</div>
+</body>
+</html>
